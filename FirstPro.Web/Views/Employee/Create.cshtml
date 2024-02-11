@@ -1,0 +1,129 @@
+﻿@model EmployeeDTO
+@{
+    ViewBag.Title = "Create";
+}
+
+
+<br />
+<br />
+<div class="content-wrapper">
+
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Employee</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Employee Card</a></li>
+                        <li class="breadcrumb-item active">Create</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    @*  <section class="content">
+    <div class="container-fluid">
+
+    <div class="row"> *@
+
+    <form method="post" class="form-group" asp-action="Create" asp-controller="Employee">
+        <div class="border p-3 mt-4">
+            <div class="row pb-2">
+                <h2 class="text-primary">New Employee</h2>
+                <hr />
+            </div>
+            <div asp-validation-summary="All" class="text-danger">
+            </div>
+            <div class="mb-3">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control" placeholder="Enter Your Name" />
+                <span asp-validation-for="Name" class="text-danger" ></span>
+
+
+            </div>
+            <div class="mb-3">
+                <label asp-for="Salary"></label>
+                <input asp-for="Salary" class="form-control" placeholder="Enter Your Salary" />
+                <span asp-validation-for="Salary" class="text-danger"></span>
+
+
+
+
+            </div>
+            <div class="mb-3">
+                <label asp-for="Email"></label>
+                <input asp-for="Email" class="form-control" placeholder="Enter Your Email" />
+
+
+                
+                <span asp-validation-for="Email" class="text-danger"></span>
+
+
+
+
+
+            </div>
+            <div class="mb-3">
+                <label asp-for="HireDate"></label>
+                <input asp-for="HireDate" class="form-control" />
+                <span asp-validation-for="HireDate" class="text-danger"></span>
+
+
+
+
+            </div>
+            <div class="mb-3">
+                <label asp-for="CreationDate"></label>
+                <input asp-for="CreationDate" class="form-control" />
+                <span asp-validation-for="CreationDate" class="text-danger"></span>
+
+
+
+
+            </div>
+            <div class="mb-3">
+                <label asp-for="DepartmentId">Departments</label>
+
+                <select asp-for="DepartmentId" class="form-control" asp-items="(SelectList)ViewBag.DepartmentList">
+                    <option>Choose Department</option>
+                </select>
+                <span asp-validation-for="DepartmentId" class="text-danger"></span>
+
+
+
+
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" checked asp-for="IsActive">
+                <label class="form-check-label" asp-for="IsActive">Is Active</label>
+            </div>
+          
+
+
+
+            <br />
+            <input type="submit" class="btn btn-primary" value="Save" />
+
+            <a asp-controller="Employee" asp-action="Index" class="btn btn-danger" style="width=150px;"> Back To items</a>
+
+
+
+        </div>
+
+    </form>
+    @*  </div>
+    </div>
+
+    </section> *@
+
+
+</div>
+
+@section JqueryValidation {
+    <script src="~/plugins/jquery-validation/jquery.validate.min.js"></script>
+    <script src="~/plugins/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

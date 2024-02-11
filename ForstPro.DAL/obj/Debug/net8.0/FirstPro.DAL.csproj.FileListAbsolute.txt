@@ -1,0 +1,14 @@
+C:\Users\clt\source\repos\FirstPro\ForstPro.DAL\bin\Debug\net8.0\FirstPro.DAL.deps.json
+C:\Users\clt\source\repos\FirstPro\ForstPro.DAL\bin\Debug\net8.0\FirstPro.DAL.dll
+C:\Users\clt\source\repos\FirstPro\ForstPro.DAL\bin\Debug\net8.0\FirstPro.DAL.pdb
+C:\Users\clt\source\repos\FirstPro\ForstPro.DAL\obj\Debug\net8.0\FirstPro.DAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\clt\source\repos\FirstPro\ForstPro.DAL\obj\Debug\net8.0\FirstPro.DAL.AssemblyInfoInputs.cache
+C:\Users\clt\source\repos\FirstPro\ForstPro.DAL\obj\Debug\net8.0\FirstPro.DAL.AssemblyInfo.cs
+C:\Users\clt\source\repos\FirstPro\ForstPro.DAL\obj\Debug\net8.0\FirstPro.DAL.csproj.CoreCompileInputs.cache
+C:\Users\clt\source\repos\FirstPro\ForstPro.DAL\obj\Debug\net8.0\FirstPro.DAL.dll
+C:\Users\clt\source\repos\FirstPro\ForstPro.DAL\obj\Debug\net8.0\refint\FirstPro.DAL.dll
+C:\Users\clt\source\repos\FirstPro\ForstPro.DAL\obj\Debug\net8.0\FirstPro.DAL.pdb
+C:\Users\clt\source\repos\FirstPro\ForstPro.DAL\obj\Debug\net8.0\ref\FirstPro.DAL.dll
+C:\Users\clt\source\repos\FirstPro\ForstPro.DAL\bin\Debug\net8.0\FirstPro.DAL.runtimeconfig.json
+C:\Users\clt\source\repos\FirstPro\ForstPro.DAL\obj\Debug\net8.0\FirstPro.DAL.csproj.AssemblyReference.cache
+C:\Users\clt\source\repos\FirstPro\ForstPro.DAL\obj\Debug\net8.0\FirstPro.DAL.genruntimeconfig.cache
