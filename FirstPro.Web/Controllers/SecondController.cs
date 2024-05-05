@@ -12,5 +12,9 @@ namespace FirstPro.Web.Controllers
         {
             return View();
         }
+        public IActionResult Create2()
+        {
+            return View();
+        }
     }
 }
