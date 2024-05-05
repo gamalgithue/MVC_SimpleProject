@@ -8097,11 +8097,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\First_Project_MVC\\MVC_SimpleProject-main\\FirstPro.Web\\FirstPro.Web.csproj",
+      "projectUniqueName": "C:\\Users\\clt\\source\\repos\\MVC_SimpleProject\\FirstPro.Web\\FirstPro.Web.csproj",
       "projectName": "FirstPro.Web",
-      "projectPath": "D:\\First_Project_MVC\\MVC_SimpleProject-main\\FirstPro.Web\\FirstPro.Web.csproj",
+      "projectPath": "C:\\Users\\clt\\source\\repos\\MVC_SimpleProject\\FirstPro.Web\\FirstPro.Web.csproj",
       "packagesPath": "C:\\Users\\clt\\.nuget\\packages\\",
-      "outputPath": "D:\\First_Project_MVC\\MVC_SimpleProject-main\\FirstPro.Web\\obj\\",
+      "outputPath": "C:\\Users\\clt\\source\\repos\\MVC_SimpleProject\\FirstPro.Web\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -8122,8 +8122,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\First_Project_MVC\\MVC_SimpleProject-main\\FirstPro.BLL\\FirstPro.BLL.csproj": {
-              "projectPath": "D:\\First_Project_MVC\\MVC_SimpleProject-main\\FirstPro.BLL\\FirstPro.BLL.csproj"
+            "C:\\Users\\clt\\source\\repos\\MVC_SimpleProject\\FirstPro.BLL\\FirstPro.BLL.csproj": {
+              "projectPath": "C:\\Users\\clt\\source\\repos\\MVC_SimpleProject\\FirstPro.BLL\\FirstPro.BLL.csproj"
             }
           }
         }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "V4GAgODAWFwyxaF0D68FI8WBoDhuDde/dPFv8XgG2oSVxqTMg7eDseulQ1OK1cmJ6/IxpDIfrsIhq6zk2MVw0w==",
+  "dgSpecHash": "OfZfBRbRlyfGs5qXZqJZlqF03fXcswef2qtdffMPDUUOtxgJTuYU5jEvxF6WhcJXuJkqm+ARrtrJu5fD26JcXg==",
   "success": true,
-  "projectFilePath": "D:\\First_Project_MVC\\MVC_SimpleProject-main\\FirstPro.Web\\FirstPro.Web.csproj",
+  "projectFilePath": "C:\\Users\\clt\\source\\repos\\MVC_SimpleProject\\FirstPro.Web\\FirstPro.Web.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\clt\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\clt\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

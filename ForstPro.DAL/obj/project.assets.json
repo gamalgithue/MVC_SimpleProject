@@ -4022,11 +4022,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\First_Project_MVC\\MVC_SimpleProject-main\\ForstPro.DAL\\FirstPro.DAL.csproj",
+      "projectUniqueName": "C:\\Users\\clt\\source\\repos\\MVC_SimpleProject\\ForstPro.DAL\\FirstPro.DAL.csproj",
       "projectName": "FirstPro.DAL",
-      "projectPath": "D:\\First_Project_MVC\\MVC_SimpleProject-main\\ForstPro.DAL\\FirstPro.DAL.csproj",
+      "projectPath": "C:\\Users\\clt\\source\\repos\\MVC_SimpleProject\\ForstPro.DAL\\FirstPro.DAL.csproj",
       "packagesPath": "C:\\Users\\clt\\.nuget\\packages\\",
-      "outputPath": "D:\\First_Project_MVC\\MVC_SimpleProject-main\\ForstPro.DAL\\obj\\",
+      "outputPath": "C:\\Users\\clt\\source\\repos\\MVC_SimpleProject\\ForstPro.DAL\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

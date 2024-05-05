@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Au3Js/D+p9qZPRQHjgqO6ODjktw1/paaMQkp4TMdUVjAn5v9KDdpWvbK2Bh3GhDq4bxkKNQFmDi56nkh7iN4gA==",
+  "dgSpecHash": "4kf7fSnx2sAqgFIUiRJHAEYcHx093tgKEbrw2h75ehb+yLGTIAw3IjbNxQ0vyrY5FmDC4LuFZ4dYzRZVdp+cxg==",
   "success": true,
-  "projectFilePath": "D:\\First_Project_MVC\\MVC_SimpleProject-main\\FirstPro.BLL\\FirstPro.BLL.csproj",
+  "projectFilePath": "C:\\Users\\clt\\source\\repos\\MVC_SimpleProject\\FirstPro.BLL\\FirstPro.BLL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\clt\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\clt\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

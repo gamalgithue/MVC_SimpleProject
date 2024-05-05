@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "GLkhcaNZ10BPJMp5ntEduJWhPlOlzTnZ7eC6yTDfzFVU7T07J8SPnQSLZZxWtw8meu2JTy3UMUqXohquVUISqw==",
+  "dgSpecHash": "aPCTp7ILyITAKT6fCwVW1YPhvWWqm48sbLOUG1oDoQW+VRRt0xpCQiqInbrLxUkIHRCH5paOJQX/+Lb8no1usw==",
   "success": true,
-  "projectFilePath": "D:\\First_Project_MVC\\MVC_SimpleProject-main\\ForstPro.DAL\\FirstPro.DAL.csproj",
+  "projectFilePath": "C:\\Users\\clt\\source\\repos\\MVC_SimpleProject\\ForstPro.DAL\\FirstPro.DAL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\clt\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\clt\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

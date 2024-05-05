@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = FirstPro.DAL
-build_property.ProjectDir = D:\First_Project_MVC\MVC_SimpleProject-main\ForstPro.DAL\
+build_property.ProjectDir = C:\Users\clt\source\repos\MVC_SimpleProject\ForstPro.DAL\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
