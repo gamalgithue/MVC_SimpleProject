@@ -1,0 +1,7 @@
+﻿.inline-form-group {
+    display: flex;
+}
+
+    .inline-form-group input {
+        margin-right: 5px; /* Adjust the margin as needed */
+    }

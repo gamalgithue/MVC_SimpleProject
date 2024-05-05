@@ -1,0 +1,119 @@
+﻿@model IEnumerable<DepartmentDTO>
+
+@{
+    ViewBag.Title = "Department";
+}
+
+
+
+
+
+<br />
+<br />
+<div class="content-wrapper">
+
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Dashboard</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Dashboard v1</a></li>
+                       
+                        <li class="breadcrumb-item active"> Department</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <section class="content">
+        <div class="container-fluid">
+
+            <div class="row">
+       
+        <div class="col-3">
+            
+           <h3>Department View</h3>
+        </div>
+        <div class="col-5">
+
+                    <form asp-controller="Department" asp-action="Index" class="form-group">
+                        <div class="inline-form-group">
+                            <input type="text" name="SearchValue" class="form-control" />
+                            <input type="submit" value="Search" class="btn btn-danger" />
+                        </div>
+                    </form>
+        </div>
+        <div class="col-4">
+                    <a asp-controller="Department" asp-action="Create" class="btn btn-outline-primary">
+                <i class="fa-solid fa-plus"></i>&nbsp; Create New Department
+            </a>
+        </div>
+       
+    </div>
+</div>
+<center>
+<table class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Name
+            </th>
+            <th>Code</th>
+            <th>No of Employees</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Id
+                </td>
+                <td>
+                    @item.Name
+                </td>
+
+                <td>
+                    @item.Code
+                </td>
+               
+                <td>
+                    @item.NoOfEmp
+                </td>
+                <td>
+                    <a class="btn btn-outline-success" asp-action="Update" asp-controller="Department" asp-route-Id="@item.Id">
+                        <i class="fa-solid fa-pencil"></i>
+                    </a>
+                    &nbsp;
+                    <a class="btn btn-outline-danger" asp-action="Delete" asp-controller="Department" asp-route-Id="@item.Id">
+                        <i class="fa-solid fa-trash-can"></i>
+
+                    </a>
+                                &nbsp;
+                                <a class="btn btn-outline-danger" asp-action="Details" asp-controller="Department" asp-route-Id="@item.Id">
+                                    <i class="fa-solid fa-info"></i>
+                                </a>
+
+                </td>
+            </tr>
+
+        }
+    </tbody>
+
+</table>
+    </center>
+    </section>
+</div>
+
+

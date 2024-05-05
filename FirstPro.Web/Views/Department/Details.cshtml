@@ -1,0 +1,85 @@
+﻿@model DepartmentDTO
+@{
+    ViewBag.Title = "Details";
+}
+
+<br />
+<br />
+<div class="content-wrapper">
+
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Department</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Department Card</a></li>
+                        <li class="breadcrumb-item active">Details</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+   @*  <section class="content">
+        <div class="container-fluid">
+
+            <div class="row"> *@
+
+                <form method="get">
+                    <div class="border p-3 mt-4">
+                        <div class="row pb-2">
+                            <h2 class="text-primary">Details @Model.Name</h2>
+                        </div>
+                        <input type="hidden" asp-for="Id" />
+                        <div class="mb-3">
+                            <label asp-for="Name"></label>
+                            <input asp-for="Name" class="form-control" disabled/>
+
+
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Code"></label>
+                            <input asp-for="Code" class="form-control" disabled />
+
+
+
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="NoOfEmp"></label>
+                            <input asp-for="NoOfEmp" class="form-control" disabled />
+
+
+
+                        </div>
+                        
+                       
+
+                        <br />
+                        <center>
+
+
+            <a asp-controller="Department" asp-action="Update" asp-route-id="@Model.Id" class="btn btn-success" style="width=150px;"> Update</a>
+                <a asp-controller="Department" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger" style="width=150px"> Delete</a>
+
+            <a asp-controller="Department" asp-action="Index" class="btn btn-secondary" style="width=150px"> Back To items</a>
+            </center>
+
+
+                    </div>
+
+                </form>
+               @*  </div>
+                </div>
+
+                </section> *@
+
+
+    </div>
+
+
+
+
