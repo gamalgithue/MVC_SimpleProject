@@ -25,100 +25,86 @@ namespace FirstPro.Web.Controllers
             this.department = department;
         }
         #endregion
-        public async Task<IActionResult> Index(string? SearchValue)
+        public async Task<IActionResult> Index()
         {
-            if (SearchValue == null)
-            {
-
-
-               var depts = await employee.GetAsync(x=>x.Department);
-               depts= await employee.GetAsync(x => x.Name != null);
-
-
-                var result = mapper.Map<List<EmployeeDTO>>(depts);
-
-
-                return View(result);
-
-            }
-            else
-            {
-
-
-                var depts = await employee.GetAsync(x => x.Department);
-                 depts = await employee.GetAsync(x =>
-                 x.Name.Contains(SearchValue) ||
-                 x.Salary.ToString() == SearchValue ||
-              x.Email.Contains(SearchValue) ||
-                  x.HireDate.ToString() == SearchValue ||
-                x.Department.Name.Contains(SearchValue)
-                   );
-                var result = mapper.Map<List<EmployeeDTO>>(depts);
-
-                
-
-
-                return View(result);
-            }
-
+            var emps = await employee.getEmployeesAsync(1, 10);
+            return View(emps);
 
         }
         public async Task<IActionResult> Details(int id)
         {
 
-            var depts = await employee.GetAsyncById(x => x.Id == id,x=>x.Department);
-            
-            var result = mapper.Map<EmployeeDTO>(depts);
+            var result = await employee.getEmployeeAsync(id);
 
-
-
-            return View(result);
+                return View(result);
         }
         [HttpGet]
         public async Task<IActionResult>  Create()
         {
-            ViewBag.DepartmentList = new SelectList(await department.GetAsync(), "Id", "Name");
+            ViewBag.DepartmentList = new SelectList(await department.getDepartmentsAsync(), "Id", "Name");
             return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> Create(EmployeeDTO employeevm)
         {
-            var result = mapper.Map<Employee>(employeevm);
-            await employee.CreateAsync(result);
-          
 
-            return RedirectToAction("Index");
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    await employee.CreateOrUpdateEmployeeAsync(employeevm);
+                    return RedirectToAction("Index");
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            ViewBag.DepartmentList = new SelectList(await department.getDepartmentsAsync(), "Id", "Name");
+
+
+
+            return View(employeevm);
         }
         [HttpGet]
         public async Task<IActionResult> Update(int id)
         {
-            var depts = await employee.GetAsyncById(x => x.Id == id);
-            var result = mapper.Map<EmployeeDTO>(depts);
-            ViewBag.DepartmentList = new SelectList(await department.GetAsync(), "Id", "Name",result.DepartmentId);
+            
+            var emp = await employee.getEmployeeAsync(id);
+            ViewBag.DepartmentList = new SelectList(await department.getDepartmentsAsync(), "Id", "Name",emp.DepartmentId);
+            
 
 
-
-            return View(result);
+            return View(emp);
         }
         [HttpPost]
         public async Task<IActionResult> Update(EmployeeDTO employeevm)
         {
 
 
-            ViewBag.DepartmentList = new SelectList(await department.GetAsync(), "Id", "Name", employeevm.DepartmentId);
+            ViewBag.DepartmentList = new SelectList(await department.getDepartmentsAsync(), "Id", "Name", employeevm.DepartmentId);
 
-            if (ModelState.IsValid == true)
+            try
             {
-                var result = mapper.Map<Employee>(employeevm);
-                await employee.UpdateAsync(result);
+                if (ModelState.IsValid)
+                {
+
+                    await employee.CreateOrUpdateEmployeeAsync(employeevm);
 
 
 
-                return RedirectToAction("Index");
+                    return RedirectToAction("Index");
+                }
+
             }
-            else
-                return View(employeevm);
+           catch(Exception ex)
+            {
+
+            }
+
+            return View(employeevm);
         }
 
 
@@ -127,9 +113,9 @@ namespace FirstPro.Web.Controllers
             {
 
 
-                var depts = await employee.GetAsyncById(x => x.Id == id);
-                var result = mapper.Map<EmployeeDTO>(depts);
-            ViewBag.DepartmentList = new SelectList(await department.GetAsync(), "Id", "Name", result.DepartmentId);
+            var result = await employee.getEmployeeAsync(id);
+
+            ViewBag.DepartmentList = new SelectList(await department.getDepartmentsAsync(), "Id", "Name", result.DepartmentId);
 
 
 
@@ -144,16 +130,15 @@ namespace FirstPro.Web.Controllers
             public async Task<IActionResult> Delete(EmployeeDTO employeevm)
             {
 
-                var result = mapper.Map<Employee>(employeevm);
-                await employee.DeleteAsync(result);
+                await employee.DeleteEmployeeAsync(employeevm);
+
+            return RedirectToAction("Index");
 
 
 
-                return RedirectToAction("Index");
 
 
-
-            }
+        }
         }
 
 

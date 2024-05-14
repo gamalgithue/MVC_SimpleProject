@@ -9,13 +9,16 @@ using System.Threading.Tasks;
 
 namespace FirstPro.BLL.Service.Interface
 {
-   public interface IDepartmentService:IGenericRepository<Department>
+   public interface IDepartmentService
     {
-        //public Task<List<Department>> GetAsync(Expression<Func<Department,bool>> filter);
-        //public Task<Department> GetAsyncById(Expression<Func<Department, bool>> filter);
-        //public Task CreateAsync(Department department);
-        //public Task UpdateAsync(Department department);
-        //public Task DeleteAsync(Department department);
+        public Task<IEnumerable<DepartmentDTO>> getDepartmentsAsync();
+
+        public Task<IEnumerable<DepartmentDTO>> getDepartmentsAsync(int page, int pagesize);
+
+        public Task<DepartmentDTO> getDepartmentAsync(int id);
+        public Task CreateOrUpdateDepartmentAsync(DepartmentDTO department);
+        public Task DeleteDepartmentAsync(DepartmentDTO department);
+
 
 
     }

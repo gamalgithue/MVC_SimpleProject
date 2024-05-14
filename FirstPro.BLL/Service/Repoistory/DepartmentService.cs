@@ -1,4 +1,5 @@
-﻿using FirstPro.BLL.Modals;
+﻿using AutoMapper;
+using FirstPro.BLL.Modals;
 using FirstPro.BLL.Service.Interface;
 using FirstPro.DAL.Database;
 using FirstPro.DAL.Entities;
@@ -12,71 +13,57 @@ using System.Threading.Tasks;
 
 namespace FirstPro.BLL.Service.Repoistory
 {
-    public class DepartmentServic: GenericRepository<Department>,IDepartmentService
+    public class DepartmentServic:IDepartmentService
     {
 
 
-        public DepartmentServic(ApplicationDbContext ops):base(ops)
+        #region prop
+        private readonly IGenericRepository<Department> _departmentservice;
+        private readonly IMapper _mapper;
+        #endregion
+
+        #region ctor
+        public DepartmentServic(IGenericRepository<Department> _departmentservice,IMapper _mapper)
         {
-            
+            this._departmentservice = _departmentservice;
+            this._mapper = _mapper;
+        }
+        #endregion
+
+        #region actions
+        public async Task<IEnumerable<DepartmentDTO>> getDepartmentsAsync()
+        {
+            var result = await _departmentservice.GetAsync(null,null,100,false);
+            return _mapper.Map<IEnumerable<DepartmentDTO>>(result);
+        }
+        public async Task<IEnumerable<DepartmentDTO>> getDepartmentsAsync(int page, int pagesize)
+        {
+            var result = await _departmentservice.GetAsync(null, page, pagesize, false);
+            return _mapper.Map<IEnumerable<DepartmentDTO>>(result);
+        }
+
+        public async Task<DepartmentDTO> getDepartmentAsync(int id)
+        {
+            var result = await _departmentservice.GetFirstOrDefaultAsync(x => x.Id == id, false);
+            return _mapper.Map<DepartmentDTO>(result);
+        }
+        public async Task CreateOrUpdateDepartmentAsync(DepartmentDTO department)
+        {
+            var obj = _mapper.Map<Department>(department);
+            await _departmentservice.CreateOrUpdateAsync(obj);
+
         }
 
 
-        //public DepartmentServic(ApplicationDbContext db):base(db)
-        //{
 
-        //}
-        //private readonly ApplicationDbContext _db;
-
-        //public DepartmentService(ApplicationDbContext _db)
-        //{
-        //    this._db = _db;
-        //}
-
-        //public  async Task<List<Department>> GetAsync(Expression<Func<Department, bool>> filter)
-        //{
-        //    var result = await _db.Departments.Where(filter).ToListAsync();
-        //    return result;
-        //}
-
-        //public  async Task<Department> GetAsyncById(Expression<Func<Department, bool>> filter)
-        //{
-        //    var result = await _db.Departments.Where(filter).FirstOrDefaultAsync();
-        //    return result;
-
-        //}
-        //public async Task CreateAsync(Department department)
-        //{
-
-        //   await _db.Departments.AddAsync(department);
-        //   await _db.SaveChangesAsync();
+        public async Task DeleteDepartmentAsync(DepartmentDTO department)
+        {
+            var obj = _mapper.Map<Department>(department);
+            await _departmentservice.DeleteAsync(obj);
+        }
 
 
-        //}
-
-
-
-
-        //public async Task UpdateAsync(Department department)
-        //{
-        //    var olddata =  await _db.Departments.FindAsync(department.Id);
-
-        //    olddata.Name = department.Name;
-        //    olddata.Code = department.Code;
-        //    olddata.NoOfEmp = department.NoOfEmp;
-        //    await _db.SaveChangesAsync();
-
-        //}
-        //public async Task DeleteAsync(Department department)
-        //{
-        //    //var olddata = await  _db.Departments.FindAsync(department.Id);
-
-
-
-        //    _db.Departments.Remove(department);
-        //    await _db.SaveChangesAsync();
-
-        //}
+        #endregion
 
     }
 }

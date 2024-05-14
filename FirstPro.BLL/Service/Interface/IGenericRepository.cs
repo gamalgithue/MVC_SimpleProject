@@ -9,15 +9,23 @@ namespace FirstPro.BLL.Service.Interface
 {
     public interface IGenericRepository<TEntity> where TEntity : class
     {
-        public Task<List<TEntity>> GetAsync();
+       
+        public Task<IEnumerable<TEntity>> GetAsync(
+         Expression<Func<TEntity, bool>>? filter = null,
+         int? page = null,
+         int pageSize = 10,
+         bool noTrack = false,
+         params Expression<Func<TEntity, object>>[] includeProperties);
 
-        public Task<List<TEntity>> GetAsync(Expression<Func<TEntity, bool>> filter);
-        public Task<List<TEntity>> GetAsync(params Expression<Func<TEntity, object>>[] includes);
+        public Task<TEntity> GetFirstOrDefaultAsync(
+            Expression<Func<TEntity, bool>>? filter = null,
+              bool noTrack = false,
+              params Expression<Func<TEntity, object>>[] includeProperties);
 
-        public Task<TEntity> GetAsyncById(Expression<Func<TEntity, bool>> filter, params Expression<Func<TEntity, object>>[] includes);
-        public Task CreateAsync(TEntity obj);
-        public Task UpdateAsync(TEntity obj);
-        public Task DeleteAsync(TEntity obj);
+        public Task CreateOrUpdateAsync(TEntity entity);
+        public Task DeleteAsync(TEntity entity);
+        public object[] GetKeyValues(TEntity entity);
+
     }
 
 

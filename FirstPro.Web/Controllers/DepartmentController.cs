@@ -22,36 +22,18 @@ namespace FirstPro.Web.Controllers
             this.mapper = mapper;
         }
 
-        #endregion 
-        public async Task<IActionResult> Index(string? SearchValue)
+        #endregion
+
+        #region Actions
+        public async Task<IActionResult> Index()
         {
-            if (SearchValue == null)
-            {
-                var depts = await _department.GetAsync(x => x.Name != null);
-
-                var result = mapper.Map<List<DepartmentDTO>>(depts);
-
-
-                return View(result);
-
-            }
-            else
-            {
-                var depts = await _department.GetAsync(x => x.Name.Contains(SearchValue)
-                || x.Code.Contains(SearchValue) || x.NoOfEmp.ToString() == SearchValue
-                || x.Id.ToString() == SearchValue);
-                var result = mapper.Map<List<DepartmentDTO>>(depts);
-
-
-                return View(result);
-            }
+            var result = await _department.getDepartmentsAsync();
+            return View(result);
         }
-        
           
         public async Task<IActionResult> Details(int id)
         {
-            var depts = await _department.GetAsyncById(x => x.Id==id);
-            var result = mapper.Map<DepartmentDTO>(depts);
+            var result = await _department.getDepartmentAsync(id);
 
 
 
@@ -65,8 +47,7 @@ namespace FirstPro.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(DepartmentDTO department)
         {
-            var result = mapper.Map<Department>(department);
-            await _department.CreateAsync(result);
+            await _department.CreateOrUpdateDepartmentAsync(department);
 
             return RedirectToAction("Index");
         }
@@ -74,8 +55,7 @@ namespace FirstPro.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Update(int id)
         {
-            var depts = await _department.GetAsyncById(x => x.Id == id);
-            var result = mapper.Map<DepartmentDTO>(depts);
+            var result= await _department.getDepartmentAsync(id);
 
 
 
@@ -86,8 +66,7 @@ namespace FirstPro.Web.Controllers
         {
             if (ModelState.IsValid == true)
             {
-                var result = mapper.Map<Department>(department);
-                await _department.UpdateAsync(result);
+                await _department.CreateOrUpdateDepartmentAsync(department);
 
 
 
@@ -103,8 +82,7 @@ namespace FirstPro.Web.Controllers
         {
 
           
-            var depts = await _department.GetAsyncById(x => x.Id == id);
-            var result = mapper.Map<DepartmentDTO>(depts);
+            var result = await _department.getDepartmentAsync(id);
 
 
             return View(result);
@@ -115,8 +93,7 @@ namespace FirstPro.Web.Controllers
         public async Task<IActionResult>  Delete(DepartmentDTO department)
         {
           
-                var result = mapper.Map<Department>(department);
-                await _department.DeleteAsync(result);
+                await _department.DeleteDepartmentAsync(department);
 
 
 
@@ -125,8 +102,8 @@ namespace FirstPro.Web.Controllers
 
            
         }
-        
 
+        #endregion
 
 
 

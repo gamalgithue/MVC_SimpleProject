@@ -14,8 +14,8 @@ namespace FirstPro.BLL.Mapper
           public DomainProfile()
         {
             CreateMap<Department, DepartmentDTO>().ReverseMap();
-            CreateMap<EmployeeDTO, Employee>().ReverseMap().
-            ForPath(dest => dest.DepartmentName, opt => opt.MapFrom(src => src.Department.Name))
+            CreateMap<EmployeeDTO, Employee>().ReverseMap()
+            .ForPath(dest => dest.DepartmentName, opt => opt.MapFrom(src => src.Department.Name))
             .ForPath(dest => dest.DepartmentCode, opt => opt.MapFrom(src => src.Department.Code));
 
 
