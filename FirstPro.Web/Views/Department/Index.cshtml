@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<DepartmentDTO>
 
 @{
-    ViewBag.Title = "Department";
+    ViewBag.Title = SharedLocalizer["Department"];
 }
 
 
@@ -16,13 +16,13 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Dashboard</h1>
+                    <h1 class="m-0">@SharedLocalizer["Dashboard"]</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Dashboard v1</a></li>
+                        <li class="breadcrumb-item"><a href="#">@SharedLocalizer["Dashboardv1"]</a></li>
                        
-                        <li class="breadcrumb-item active"> Department</li>
+                        <li class="breadcrumb-item active">@SharedLocalizer["Department"] </li>
                     </ol>
                 </div>
             </div>
@@ -37,21 +37,21 @@
             <div class="row">
        
         <div class="col-3">
-            
-           <h3>Department View</h3>
+
+                    <h3>@SharedLocalizer["Departmentview"]</h3>
         </div>
         <div class="col-5">
 
                     <form asp-controller="Department" asp-action="Index" class="form-group">
                         <div class="inline-form-group">
                             <input type="text" name="SearchValue" class="form-control" />
-                            <input type="submit" value="Search" class="btn btn-danger" />
+                            <input type="submit" value=@SharedLocalizer["Search"] class="btn btn-danger" />
                         </div>
                     </form>
         </div>
         <div class="col-4">
                     <a asp-controller="Department" asp-action="Create" class="btn btn-outline-primary">
-                <i class="fa-solid fa-plus"></i>&nbsp; Create New Department
+                        <i class="fa-solid fa-plus"></i>&nbsp; @SharedLocalizer["CND"]
             </a>
         </div>
        
@@ -62,13 +62,13 @@
     <thead>
         <tr>
             <th>
-                ID
-            </th>
+                            @SharedLocalizer["ID"]
+                        </th>
             <th>
-                Name
+                            @SharedLocalizer["Name"]
             </th>
-            <th>Code</th>
-            <th>No of Employees</th>
+                        <th>@SharedLocalizer["Code"]</th>
+                        <th>@SharedLocalizer["NOE"]</th>
 
 
         </tr>

@@ -121,6 +121,10 @@
       "PackagePath": "staticwebassets\\dist\\img\\AdminLTELogo.png"
     },
     {
+      "Id": "C:\\Users\\clt\\source\\repos\\MVC_SimpleProject\\FirstPro.Web\\wwwroot\\dist\\img\\Egypt.jpg",
+      "PackagePath": "staticwebassets\\dist\\img\\Egypt.jpg"
+    },
+    {
       "Id": "C:\\Users\\clt\\source\\repos\\MVC_SimpleProject\\FirstPro.Web\\wwwroot\\dist\\img\\avatar.png",
       "PackagePath": "staticwebassets\\dist\\img\\avatar.png"
     },
@@ -219,6 +223,10 @@
     {
       "Id": "C:\\Users\\clt\\source\\repos\\MVC_SimpleProject\\FirstPro.Web\\wwwroot\\dist\\img\\prod-5.jpg",
       "PackagePath": "staticwebassets\\dist\\img\\prod-5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\clt\\source\\repos\\MVC_SimpleProject\\FirstPro.Web\\wwwroot\\dist\\img\\usa.jpg",
+      "PackagePath": "staticwebassets\\dist\\img\\usa.jpg"
     },
     {
       "Id": "C:\\Users\\clt\\source\\repos\\MVC_SimpleProject\\FirstPro.Web\\wwwroot\\dist\\img\\user1-128x128.jpg",

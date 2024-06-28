@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "8ZgQT7XFguGOoAAK1YYUkAAXlbgISjKeIf0g4b0FlYY=",
+  "Hash": "+XK+IghNIuH13OUc1R6hQTzTB1lJd3SdphN3DM3SGwo=",
   "Source": "FirstPro.Web",
   "BasePath": "_content/FirstPro.Web",
   "Mode": "Default",
@@ -910,6 +910,25 @@
       "OriginalItemSpec": "wwwroot\\dist\\img\\default-150x150.png"
     },
     {
+      "Identity": "C:\\Users\\clt\\source\\repos\\MVC_SimpleProject\\FirstPro.Web\\wwwroot\\dist\\img\\Egypt.jpg",
+      "SourceId": "FirstPro.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\clt\\source\\repos\\MVC_SimpleProject\\FirstPro.Web\\wwwroot\\",
+      "BasePath": "_content/FirstPro.Web",
+      "RelativePath": "dist/img/Egypt.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\dist\\img\\Egypt.jpg"
+    },
+    {
       "Identity": "C:\\Users\\clt\\source\\repos\\MVC_SimpleProject\\FirstPro.Web\\wwwroot\\dist\\img\\gemy.jpg",
       "SourceId": "FirstPro.Web",
       "SourceType": "Discovered",
@@ -1117,6 +1136,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\dist\\img\\prod-5.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\clt\\source\\repos\\MVC_SimpleProject\\FirstPro.Web\\wwwroot\\dist\\img\\usa.jpg",
+      "SourceId": "FirstPro.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\clt\\source\\repos\\MVC_SimpleProject\\FirstPro.Web\\wwwroot\\",
+      "BasePath": "_content/FirstPro.Web",
+      "RelativePath": "dist/img/usa.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\dist\\img\\usa.jpg"
     },
     {
       "Identity": "C:\\Users\\clt\\source\\repos\\MVC_SimpleProject\\FirstPro.Web\\wwwroot\\dist\\img\\user1-128x128.jpg",

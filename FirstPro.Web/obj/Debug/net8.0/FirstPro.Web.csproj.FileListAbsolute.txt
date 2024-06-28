@@ -794,3 +794,8 @@ C:\Users\clt\source\repos\MVC_SimpleProject\FirstPro.Web\obj\Debug\net8.0\scoped
 C:\Users\clt\source\repos\MVC_SimpleProject\FirstPro.Web\obj\Debug\net8.0\FirstPro.Web.csproj.CopyComplete
 C:\Users\clt\source\repos\MVC_SimpleProject\FirstPro.Web\obj\Debug\net8.0\FirstPro.Web.genruntimeconfig.cache
 C:\Users\clt\source\repos\MVC_SimpleProject\FirstPro.Web\obj\Debug\net8.0\ref\FirstPro.Web.dll
+C:\Users\clt\source\repos\MVC_SimpleProject\FirstPro.Web\bin\Debug\net8.0\ar-EG\FirstPro.Web.resources.dll
+C:\Users\clt\source\repos\MVC_SimpleProject\FirstPro.Web\obj\Debug\net8.0\FirstPro.Web.Languages.SharedResource.resources
+C:\Users\clt\source\repos\MVC_SimpleProject\FirstPro.Web\obj\Debug\net8.0\FirstPro.Web.Languages.SharedResource.ar-EG.resources
+C:\Users\clt\source\repos\MVC_SimpleProject\FirstPro.Web\obj\Debug\net8.0\FirstPro.Web.csproj.GenerateResource.cache
+C:\Users\clt\source\repos\MVC_SimpleProject\FirstPro.Web\obj\Debug\net8.0\ar-EG\FirstPro.Web.resources.dll

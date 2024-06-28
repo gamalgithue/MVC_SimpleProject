@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@{
+    var Culture = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
+}
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -154,15 +157,29 @@
                             <span class="float-right text-muted text-sm">3 mins</span>
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-users mr-2"></i> 8 friend requests
-                            <span class="float-right text-muted text-sm">12 hours</span>
-                        </a>
+                        @if (Culture == "ar-EG")
+                        {
+                            <a class="dropdown-item d-flex justify-content-between"
+                               href="@Url.Action("SetLanguage","Language", new {
+                                                  culture = "en-US",
+                                                  returnUrl = Context.Request.Path + Context.Request.QueryString
+                                              })
+                            ">
+                                <img src="~/dist/img/usa.jpg" width="25" height="15" class="mt-1" />
+                                <span>@SharedLocalizer["En"]</span>
+                            </a>
+                        }else{
                         <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-file mr-2"></i> 3 new reports
-                            <span class="float-right text-muted text-sm">2 days</span>
-                        </a>
+                        <a class="dropdown-item d-flex justify-content-between"
+                               href="@Url.Action("SetLanguage", "Language", new {
+                                                  culture = "ar-EG",
+                                                  returnUrl = Context.Request.Path + Context.Request.QueryString
+                                              })">
+                            <img src="~/dist/img/Egypt.jpg" width="25" height="15" class="mt-1" />
+                                <span>@SharedLocalizer["Ar"]</span>
+                            </a>
+                        }
+
                         <div class="dropdown-divider"></div>
                         <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
                     </div>
