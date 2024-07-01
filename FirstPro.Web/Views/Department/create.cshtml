@@ -40,14 +40,14 @@
 
             </div>
             <div class="mb-3">
-                <label asp-for="Name"></label>
+                <label asp-for="Name">@SharedLocalizer["Name"]</label>
                 <input asp-for="Name" class="form-control" placeholder="Enter Your Name" />
                 <span asp-validation-for="Name" class="text-danger"></span>
 
 
             </div>
             <div class="mb-3">
-                <label asp-for="Code"></label>
+                <label asp-for="Code">@SharedLocalizer["Code"]</label>
                 <input asp-for="Code" class="form-control" placeholder="Enter Your Code" />
                 <span asp-validation-for="Code" class="text-danger"></span>
 
@@ -56,7 +56,7 @@
 
             </div>
             <div class="mb-3">
-                <label asp-for="NoOfEmp"></label>
+                <label asp-for="NoOfEmp">@SharedLocalizer["NOE"]</label>
                 <input asp-for="NoOfEmp" class="form-control" placeholder="Enter Your NoOfEmployees" />
                 <span asp-validation-for="NoOfEmp" class="text-danger"></span>
 

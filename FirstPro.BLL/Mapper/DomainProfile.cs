@@ -19,6 +19,9 @@ namespace FirstPro.BLL.Mapper
             .ForPath(dest => dest.DepartmentCode, opt => opt.MapFrom(src => src.Department.Code));
 
 
+            CreateMap<CountryDTO,Country>().ReverseMap();
+            CreateMap<CityDTO,City>().ReverseMap();
+             CreateMap<DistrictDTO,District>().ReverseMap();
 
 
 

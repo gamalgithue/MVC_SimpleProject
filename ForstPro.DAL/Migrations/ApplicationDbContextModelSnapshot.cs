@@ -22,6 +22,45 @@ namespace FirstPro.DAL.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("FirstPro.DAL.Entities.City", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CountryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CountryId");
+
+                    b.ToTable("Cities");
+                });
+
+            modelBuilder.Entity("FirstPro.DAL.Entities.Country", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Countries");
+                });
+
             modelBuilder.Entity("FirstPro.DAL.Entities.Department", b =>
                 {
                     b.Property<int>("Id")
@@ -46,6 +85,28 @@ namespace FirstPro.DAL.Migrations
                     b.ToTable("Departments");
                 });
 
+            modelBuilder.Entity("FirstPro.DAL.Entities.District", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CityId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CityId");
+
+                    b.ToTable("Districts");
+                });
+
             modelBuilder.Entity("FirstPro.DAL.Entities.Employee", b =>
                 {
                     b.Property<int>("Id")
@@ -58,6 +119,9 @@ namespace FirstPro.DAL.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<int>("DepartmentId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DistrictId")
                         .HasColumnType("int");
 
                     b.Property<string>("Email")
@@ -79,7 +143,31 @@ namespace FirstPro.DAL.Migrations
 
                     b.HasIndex("DepartmentId");
 
+                    b.HasIndex("DistrictId");
+
                     b.ToTable("Employees");
+                });
+
+            modelBuilder.Entity("FirstPro.DAL.Entities.City", b =>
+                {
+                    b.HasOne("FirstPro.DAL.Entities.Country", "Country")
+                        .WithMany()
+                        .HasForeignKey("CountryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Country");
+                });
+
+            modelBuilder.Entity("FirstPro.DAL.Entities.District", b =>
+                {
+                    b.HasOne("FirstPro.DAL.Entities.City", "City")
+                        .WithMany()
+                        .HasForeignKey("CityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("City");
                 });
 
             modelBuilder.Entity("FirstPro.DAL.Entities.Employee", b =>
@@ -90,7 +178,13 @@ namespace FirstPro.DAL.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("FirstPro.DAL.Entities.District", "District")
+                        .WithMany()
+                        .HasForeignKey("DistrictId");
+
                     b.Navigation("Department");
+
+                    b.Navigation("District");
                 });
 #pragma warning restore 612, 618
         }

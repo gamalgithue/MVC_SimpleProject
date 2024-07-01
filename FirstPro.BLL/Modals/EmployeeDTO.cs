@@ -40,6 +40,12 @@ namespace FirstPro.BLL.Modals
         public int DepartmentId { get; set; }
         public Department? Department { get; set; }
 
+        public int? DistrictId { get; set; }
+
+        //[Required(ErrorMessage ="District is Required !")]
+        public District? District { get; set; }
+
+
         public string? DepartmentName { get; set; }
         public string? DepartmentCode { get; set; }
 

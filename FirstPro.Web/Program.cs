@@ -6,6 +6,7 @@ using FirstPro.Web.Languages;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json.Serialization;
 using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,7 +16,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 // Add services to the container.
-builder.Services.AddControllersWithViews().AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+builder.Services.AddControllersWithViews().
+    AddNewtonsoftJson(opt => {
+        opt.SerializerSettings.ContractResolver = new DefaultContractResolver();
+    }).AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
 .AddDataAnnotationsLocalization(options =>
 {
     options.DataAnnotationLocalizerProvider = (type, factory) =>
@@ -40,6 +44,10 @@ builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepositor
 // Assuming IDepartmentService is your service interface and DepartmentService is the implementation
 builder.Services.AddScoped<IDepartmentService,DepartmentServic>();
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();
+builder.Services.AddScoped<ICountryService, CountryService>();
+builder.Services.AddScoped<ICityService, CityService>();
+builder.Services.AddScoped<IDistrictService, DistrictService>();
+
 
 
 //builder.Services.AddScoped<IDepartmentService, DepartmentService>();

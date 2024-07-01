@@ -132,8 +132,14 @@
   <data name="Code" xml:space="preserve">
     <value>Code</value>
   </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Contact</value>
+  </data>
   <data name="Create" xml:space="preserve">
     <value>Create</value>
+  </data>
+  <data name="CreationDate" xml:space="preserve">
+    <value>CreationDate</value>
   </data>
   <data name="Dashboard" xml:space="preserve">
     <value>Dashboard</value>
@@ -146,6 +152,9 @@
   </data>
   <data name="DepartmentCard" xml:space="preserve">
     <value>Department Card</value>
+  </data>
+  <data name="Departments" xml:space="preserve">
+    <value>Departments</value>
   </data>
   <data name="Departmentview" xml:space="preserve">
     <value>Department View</value>
@@ -197,8 +206,5 @@
   </data>
   <data name="Search" xml:space="preserve">
     <value>Search</value>
-  </data>
-  <data name="ص" xml:space="preserve">
-    <value />
   </data>
 </root>

@@ -14,15 +14,21 @@ namespace FirstPro.Web.Controllers
         private readonly IEmployeeService employee;
         private readonly IMapper mapper;
         private readonly IDepartmentService department;
+        private readonly ICountryService country;
+        private readonly ICityService city;
+        private readonly IDistrictService district;
         #endregion
 
 
         #region ctor
-        public EmployeeController(IEmployeeService _employee,IMapper _mapper,IDepartmentService department)
+        public EmployeeController(IEmployeeService _employee,IMapper _mapper,IDepartmentService department,ICountryService _country,ICityService _city,IDistrictService _district)
         {
             this.employee = _employee;
             this.mapper = _mapper;
             this.department = department;
+            this.country = _country;
+            this.city = _city;
+            this.district = _district;
         }
         #endregion
         public async Task<IActionResult> Index()
@@ -42,6 +48,7 @@ namespace FirstPro.Web.Controllers
         public async Task<IActionResult>  Create()
         {
             ViewBag.DepartmentList = new SelectList(await department.getDepartmentsAsync(), "Id", "Name");
+            ViewBag.CountryList = new SelectList(await country.getCountriesAsync(), "Id", "Name");
             return View();
         }
 
@@ -63,6 +70,7 @@ namespace FirstPro.Web.Controllers
 
             }
             ViewBag.DepartmentList = new SelectList(await department.getDepartmentsAsync(), "Id", "Name");
+            ViewBag.CountryList = new SelectList(await country.getCountriesAsync(), "Id", "Name");
 
 
 
@@ -133,13 +141,27 @@ namespace FirstPro.Web.Controllers
                 await employee.DeleteEmployeeAsync(employeevm);
 
             return RedirectToAction("Index");
-
-
-
-
-
         }
+
+        [HttpPost]
+        
+        public async Task<JsonResult> GetCitiesByCntryId(int cntryid)
+        {
+            var result = await city.getCitiesAsync(cntryid);
+            return Json(result);
         }
+        [HttpPost]
+
+        public async Task<JsonResult> GetDistrictsByCityId(int cityid)
+        {
+            var result = await district.getDistrictsAsync(cityid);
+            return Json(result);
+        }
+
+
+
+
+    }
 
 
 

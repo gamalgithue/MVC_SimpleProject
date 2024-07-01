@@ -129,8 +129,14 @@
   <data name="Code" xml:space="preserve">
     <value>الكود</value>
   </data>
+  <data name="Contact" xml:space="preserve">
+    <value>الاتصال</value>
+  </data>
   <data name="Create" xml:space="preserve">
     <value>إنشاء</value>
+  </data>
+  <data name="CreationDate" xml:space="preserve">
+    <value>تاريخ الإصدار</value>
   </data>
   <data name="Dashboard" xml:space="preserve">
     <value>لوحة الإدارة</value>
@@ -143,6 +149,9 @@
   </data>
   <data name="DepartmentCard" xml:space="preserve">
     <value>كارت القسم</value>
+  </data>
+  <data name="Departments" xml:space="preserve">
+    <value>الأقسام</value>
   </data>
   <data name="Departmentview" xml:space="preserve">
     <value>بيانات القسم</value>

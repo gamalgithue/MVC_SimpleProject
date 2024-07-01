@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "OfZfBRbRlyfGs5qXZqJZlqF03fXcswef2qtdffMPDUUOtxgJTuYU5jEvxF6WhcJXuJkqm+ARrtrJu5fD26JcXg==",
+  "dgSpecHash": "5ZyVBrGaU8mRgokM5OUfa16lb7rr6+lxwg98WH1ChSTLsALMVU4V8rB4A0X2o93iAN1flxKTh4sKu5KpP6PJ7Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\clt\\source\\repos\\MVC_SimpleProject\\FirstPro.Web\\FirstPro.Web.csproj",
   "expectedPackageFiles": [
@@ -65,7 +65,9 @@
     "C:\\Users\\clt\\.nuget\\packages\\microsoft.aspnetcore.components.quickgrid\\8.0.1\\microsoft.aspnetcore.components.quickgrid.8.0.1.nupkg.sha512",
     "C:\\Users\\clt\\.nuget\\packages\\microsoft.aspnetcore.components.quickgrid.entityframeworkadapter\\8.0.1\\microsoft.aspnetcore.components.quickgrid.entityframeworkadapter.8.0.1.nupkg.sha512",
     "C:\\Users\\clt\\.nuget\\packages\\microsoft.aspnetcore.components.web\\8.0.1\\microsoft.aspnetcore.components.web.8.0.1.nupkg.sha512",
+    "C:\\Users\\clt\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\8.0.1\\microsoft.aspnetcore.jsonpatch.8.0.1.nupkg.sha512",
     "C:\\Users\\clt\\.nuget\\packages\\microsoft.aspnetcore.metadata\\8.0.1\\microsoft.aspnetcore.metadata.8.0.1.nupkg.sha512",
+    "C:\\Users\\clt\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\8.0.1\\microsoft.aspnetcore.mvc.newtonsoftjson.8.0.1.nupkg.sha512",
     "C:\\Users\\clt\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\6.0.24\\microsoft.aspnetcore.razor.language.6.0.24.nupkg.sha512",
     "C:\\Users\\clt\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\7.0.0\\microsoft.bcl.asyncinterfaces.7.0.0.nupkg.sha512",
     "C:\\Users\\clt\\.nuget\\packages\\microsoft.build\\17.7.2\\microsoft.build.17.7.2.nupkg.sha512",
@@ -126,6 +128,7 @@
     "C:\\Users\\clt\\.nuget\\packages\\microsoft.win32.systemevents\\7.0.0\\microsoft.win32.systemevents.7.0.0.nupkg.sha512",
     "C:\\Users\\clt\\.nuget\\packages\\mono.texttemplating\\2.3.1\\mono.texttemplating.2.3.1.nupkg.sha512",
     "C:\\Users\\clt\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\clt\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\newtonsoft.json.bson.1.0.2.nupkg.sha512",
     "C:\\Users\\clt\\.nuget\\packages\\nuget.common\\6.3.1\\nuget.common.6.3.1.nupkg.sha512",
     "C:\\Users\\clt\\.nuget\\packages\\nuget.configuration\\6.3.1\\nuget.configuration.6.3.1.nupkg.sha512",
     "C:\\Users\\clt\\.nuget\\packages\\nuget.dependencyresolver.core\\6.3.1\\nuget.dependencyresolver.core.6.3.1.nupkg.sha512",
