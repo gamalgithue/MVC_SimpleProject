@@ -99,8 +99,37 @@
 
 
 
+                </div>
+            <div class="mb-3">
 
+                <label for="CountryList">@SharedLocalizer["Country"]</label>
+                <select id="CountryList" class="form-control" asp-items="(SelectList)ViewBag.CountryList">
+                    <option>Choose Country</option>
+               </select>
+               
+              @*   <label asp-for="CountryName">@SharedLocalizer["Country"]</label>
+                <input asp-for="CountryName" class="form-control"  /> *@
             </div>
+
+            <div class="mb-3">
+                @* <label for="CityList">@SharedLocalizer["City"]</label>
+                <input id="CityList" class="form-control" disabled  /> *@
+                <label for="CityList">@SharedLocalizer["City"]</label>
+                <select id="CityList" class="form-control" asp-items="(SelectList)ViewBag.CityList" disabled>
+                    <option>Choose City</option>
+                </select>
+                </div>
+            <div class="mb-3">
+                <label asp-for="DistrictId">@SharedLocalizer["District"]</label>
+                <select asp-for="DistrictId" class="form-control" asp-items="(SelectList)ViewBag.DistrictList" disabled>
+                    <option>Choose District</option>
+                </select>
+            </div>
+
+
+
+
+
             <div class="form-check">
                 <input type="checkbox" class="form-check-input" checked asp-for="IsActive">
                 <label class="form-check-label" asp-for="IsActive">Is Active</label>
@@ -130,6 +159,85 @@
 @section JqueryValidation {
     <script src="~/plugins/jquery-validation/jquery.validate.min.js"></script>
     <script src="~/plugins/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script>
+        $(function () {
+
+
+
+            $("#CountryList").click(function () {
+
+
+                var countryId = $("#CountryList option:selected").val();
+
+                $("#CityList").empty();
+                $("#CityList").prop("disabled",false)
+
+
+                $("#CityList").append(`<option>--select--</option>`);
+
+
+                $.ajax({
+
+                    type: "Post",
+                    //url: "/employee/GetCitiesDataByCountryId?cntryId=" + countryId +""
+                    url: "/employee/GetCitiesByCntryId",
+                    data: { cntryid: countryId },
+                    success: function (res) {
+
+                        console.log(res);
+
+                        $.each(res, function (i, e) {
+
+                            $("#CityList").append(`<option value=${e.Id}>${e.Name}</option>`);
+
+                        });
+                    }
+
+
+                });
+
+
+
+            });
+            $("#CityList").change(function () {
+
+
+                var cityId = $("#CityList option:selected").val();
+                $("#DistrictId").prop("disabled", false)
+
+
+                $("#DistrictId").empty();
+                $("#DistrictId").append(`<option>--select--</option>`);
+
+
+                $.ajax({
+
+                    type: "Post",
+                    //url: "/employee/GetCitiesDataByCountryId?cntryId=" + countryId +""
+                    url: "/employee/GetDistrictsByCityId",
+                    data: { cityid: cityId },
+                    success: function (res) {
+
+                        console.log(res);
+
+                        $.each(res, function (i, e) {
+
+                            $("#DistrictId").append(`<option value=${e.Id}>${e.Name}</option>`);
+
+                        });
+                    }
+
+
+                });
+
+
+
+            });
+
+        });
+
+    </script>
+    }
 }
 
 

@@ -26,13 +26,13 @@ namespace FirstPro.BLL.Service.Repoistory
 
         public async Task<IEnumerable<EmployeeDTO>> getEmployeesAsync(int page, int pagesize)
         {
-            var result = await  _employeeservice.GetAsync(null, page, pagesize, false, x => x.Department);
+            var result = await  _employeeservice.GetAsync(x=>x.IsActive==true, page, pagesize, false, x => x.Department,x=>x.District,x=>x.District.City,x=>x.District.City.Country);
             return _mapper.Map<IEnumerable<EmployeeDTO>>(result);
         }
 
         public async Task<EmployeeDTO> getEmployeeAsync(int id)
         {
-            var result = await _employeeservice.GetFirstOrDefaultAsync(x => x.Id == id, false, x => x.Department);
+            var result = await _employeeservice.GetFirstOrDefaultAsync(x => x.Id == id, false, x => x.Department, x => x.District, x => x.District.City, x => x.District.City.Country);
             return _mapper.Map<EmployeeDTO>(result);
         }
         public async Task CreateOrUpdateEmployeeAsync(EmployeeDTO employee)

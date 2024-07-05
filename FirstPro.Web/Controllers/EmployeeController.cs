@@ -33,7 +33,7 @@ namespace FirstPro.Web.Controllers
         #endregion
         public async Task<IActionResult> Index()
         {
-            var emps = await employee.getEmployeesAsync(1, 10);
+            var emps = await employee.getEmployeesAsync(2, 11);
             return View(emps);
 
         }
@@ -82,7 +82,10 @@ namespace FirstPro.Web.Controllers
             
             var emp = await employee.getEmployeeAsync(id);
             ViewBag.DepartmentList = new SelectList(await department.getDepartmentsAsync(), "Id", "Name",emp.DepartmentId);
-            
+            ViewBag.CountryList = new SelectList(await country.getCountriesAsync(), "Id", "Name",emp.District.City.Country.Id);
+            ViewBag.CityList = new SelectList(await city.getCitiesAsync(), "Id", "Name", emp.District.City.Id);
+            ViewBag.DistrictList = new SelectList(await district.getDistrictsAsync(), "Id", "Name", emp.DistrictId);
+
 
 
             return View(emp);
@@ -93,6 +96,7 @@ namespace FirstPro.Web.Controllers
 
 
             ViewBag.DepartmentList = new SelectList(await department.getDepartmentsAsync(), "Id", "Name", employeevm.DepartmentId);
+            ViewBag.CountryList = new SelectList(await country.getCountriesAsync(), "Id", "Name",employeevm.CountryName);
 
             try
             {
@@ -124,6 +128,7 @@ namespace FirstPro.Web.Controllers
             var result = await employee.getEmployeeAsync(id);
 
             ViewBag.DepartmentList = new SelectList(await department.getDepartmentsAsync(), "Id", "Name", result.DepartmentId);
+            //ViewBag.DistrictList = new SelectList(await country.getCountriesAsync(), "Id", "Name",result.District.City.Country.Id);
 
 
 

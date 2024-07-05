@@ -53,6 +53,7 @@
 
             </div>
         </div>
+
         <center>
             <table class="table table-bordered table-striped" style="width:100%">
                 <thead>
@@ -67,6 +68,11 @@
                         <th>@SharedLocalizer["Email"]</th>
                         <th>@SharedLocalizer["HireDate"]</th>
                         <th>@SharedLocalizer["Department"]</th>
+                        <th>@SharedLocalizer["Country"]</th>
+                        <th>@SharedLocalizer["City"]</th>
+                        <th>@SharedLocalizer["District"]</th>
+
+
 
 
                     </tr>
@@ -92,6 +98,16 @@
                             <td>
                                 @item.DepartmentName
                             </td>
+                            <td>
+                                @item.CountryName
+                            </td>
+                            <td>
+                                @item.CityName
+                            </td>
+                            <td>
+                                @item.DistrictName
+                            </td>
+
                             <td>
                                 <a class="btn btn-outline-success" asp-action="Update" asp-controller="Employee" asp-route-Id="@item.Id">
                                     <i class="fa-solid fa-pencil"></i>

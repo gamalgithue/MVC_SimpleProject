@@ -9,6 +9,8 @@ namespace FirstPro.BLL.Service.Interface
 {
     public interface IDistrictService
     {
+        public Task<IEnumerable<DistrictDTO>> getDistrictsAsync();
+
         public Task<IEnumerable<DistrictDTO>> getDistrictsAsync(int id);
 
     }

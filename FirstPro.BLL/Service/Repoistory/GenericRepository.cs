@@ -121,7 +121,7 @@ namespace FirstPro.BLL.Service.Repoistory
         // Soft delete
         public async Task DeleteAsync(TEntity entity)
         {
-            await CreateOrUpdateAsync(entity);
+            //await CreateOrUpdateAsync(entity);
 
             // if delete
             dbSet.Remove(entity);

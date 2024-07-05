@@ -98,7 +98,7 @@
 
             </div>
             <div class="mb-3">
-                <label for="CountryList">Country</label>
+                <label for="CountryList">@SharedLocalizer["Country"]</label>
 
                 <select id="CountryList" class="form-control" asp-items="(SelectList)ViewBag.CountryList">
                     <option>--Select--</option>
@@ -110,7 +110,7 @@
 
             </div>
             <div class="mb-3">
-                <label for="CityList">City</label>
+                <label for="CityList">@SharedLocalizer["City"]</label>
 
                 <select id="CityList" class="form-control">
                     <option>--Select--</option>
@@ -122,7 +122,7 @@
 
             </div>
             <div class="mb-3">
-                <label asp-for="DistrictId">District</label>
+                <label asp-for="DistrictId">@SharedLocalizer["District"]</label>
 
                 <select asp-for="DistrictId" class="form-control">
                     <option>--Select--</option>

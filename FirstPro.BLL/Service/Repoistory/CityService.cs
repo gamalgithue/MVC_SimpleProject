@@ -23,7 +23,12 @@ namespace FirstPro.BLL.Service.Repoistory
             this.mapper = _mapper;
         }
 
-        
+        public async Task<IEnumerable<CityDTO>> getCitiesAsync()
+        {
+            var result = await _cityservice.GetAsync();
+            return mapper.Map<IEnumerable<CityDTO>>(result);
+        }
+
         #endregion
         public async Task<IEnumerable<CityDTO>> getCitiesAsync(int id)
         {

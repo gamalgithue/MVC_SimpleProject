@@ -25,6 +25,11 @@ namespace FirstPro.BLL.Service.Repoistory
 
 
         #endregion
+        public async Task<IEnumerable<DistrictDTO>> getDistrictsAsync()
+        {
+            var result = await _districtservice.GetAsync();
+            return mapper.Map<IEnumerable<DistrictDTO>>(result);
+        }
         public async Task<IEnumerable<DistrictDTO>> getDistrictsAsync(int id)
         {
             var result = await _districtservice.GetAsync(x => x.CityId == id);
