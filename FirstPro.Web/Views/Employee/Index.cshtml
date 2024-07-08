@@ -4,7 +4,11 @@
     ViewBag.Title= SharedLocalizer["Employee"];
 }
 
-
+@section DataTableStyles{
+    <link rel="stylesheet" href="~/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="~/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="~/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+}
 
 
 <br /><br />
@@ -32,11 +36,11 @@
 
             <div class="row">
 
-                <div class="col-3">
+                <div class="col-5">
 
                     <h3>@SharedLocalizer["EmployeeView"]</h3>
                 </div>
-                <div class="col-5">
+               @*  <div class="col-5">
 
                     <form asp-controller="Employee" asp-action="Index" class="form-group">
                         <div class="inline-form-group">
@@ -44,7 +48,8 @@
                             <input type="submit" value=@SharedLocalizer["Search"] class="btn btn-danger" />
                         </div>
                     </form>
-                </div>
+                </div> *@
+                <div class="col-3"></div>
                 <div class="col-4">
                     <a asp-controller="Employee" asp-action="Create" class="btn btn-outline-primary">
                         <i class="fa-solid fa-plus"></i>&nbsp; @SharedLocalizer["CNE"]
@@ -55,9 +60,11 @@
         </div>
 
         <center>
-            <table class="table table-bordered table-striped" style="width:100%">
+            <div class="card-body">
+            <table id="Employees" class="table table-bordered table-striped" style="width:100%">
                 <thead>
                     <tr>
+                            <th> @SharedLocalizer["ID"]</th>
                         <th>
                             @SharedLocalizer["Name"]
                         </th>
@@ -71,6 +78,7 @@
                         <th>@SharedLocalizer["Country"]</th>
                         <th>@SharedLocalizer["City"]</th>
                         <th>@SharedLocalizer["District"]</th>
+                            <th>@SharedLocalizer["Actions"]</th>
 
 
 
@@ -81,6 +89,7 @@
                     @foreach (var item in Model)
                     {
                         <tr>
+                            <td>@item.Id</td>
                             <td>
                                 @item.Name
                             </td>
@@ -109,7 +118,7 @@
                             </td>
 
                             <td>
-                                <a class="btn btn-outline-success" asp-action="Update" asp-controller="Employee" asp-route-Id="@item.Id">
+                                @* <a class="btn btn-outline-success" asp-action="Update" asp-controller="Employee" asp-route-Id="@item.Id">
                                     <i class="fa-solid fa-pencil"></i>
                                 </a>
                                 &nbsp;
@@ -120,7 +129,7 @@
                                 &nbsp;
                                 <a class="btn btn-outline-danger" asp-action="Details" asp-controller="Employee" asp-route-Id="@item.Id">
                                     <i class="fa-solid fa-info"></i>
-                                </a>
+                                </a> *@
 
                             </td>
                         </tr>
@@ -129,7 +138,165 @@
                 </tbody>
 
             </table>
+           
+            </div>
+            <!-- /.card-body -->
         </center>
     </section>
 
 </div>
+@section DataTableScripts{
+    <!-- DataTables  & Plugins -->
+    <script src="~/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="~/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="~/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="~/plugins/jszip/jszip.min.js"></script>
+    <script src="~/plugins/pdfmake/pdfmake.min.js"></script>
+    <script src="~/plugins/pdfmake/vfs_fonts.js"></script>
+    <script src="~/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="~/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="~/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <script>
+        $(function () {
+            $(function () {
+                var dataTable = $('#Employees').dataTable({
+                    "processing": false,
+                    "serverSide": true,
+                    "responsive": true,
+                    "lengthChange": true,
+                    "autoWidth": false,
+                    "paging": true,
+                    "searching": true,
+                    "ordering": true,
+                    "info": true,
+                    "buttons": [
+                        'copy', 'csv', 'excel', 'pdf', 'print', 'colvis'
+                    ],
+                    "ajax": {
+                        "url": "/Employee/GetData",
+                        "type": "POST",
+                        "data": "JSON"
+
+                        // "data": function (data) {
+                        //     data.pageNumber = data.start / data.length + 1;
+                        //     data.pageSize = data.length;
+                        //     return data;
+                        // }
+                    },
+                    "columns": [
+                        { "data": "Id", "name": "Id", "autowidth": true, "visible": false }, // 0
+                        { "data": "Name", "name": "Name", "autowidth": true }, // 1
+                        { "data": "Salary", "name": "Salary", "autowidth": true }, // 2
+                        { "data": "Email", "name": "Email", "autowidth": true },// 3
+                        {
+                            "data": "HireDate",
+                            "name": "HireDate",
+                            "autowidth": true,
+                            "render": function (data, type, row) {
+                                var hireDate = new Date(data);
+                                var hireDateString = hireDate.toLocaleDateString();
+                                return hireDateString;
+                            }
+                        },
+                        { "data": "DepartmentName", "name": "DepartmentName", "autowidth": true },// 5
+                        { "data": "CountryName", "name": "CountryName", "autowidth": true },// 6
+                        { "data": "CityName", "name": "CityName", "autowidth": true },// 7
+                        { "data": "DistrictName", "name": "DistrictName", "autowidth": true },//8 
+
+
+
+                        {
+                            "data": null, // We're not binding data directly to this column
+                            "render": function (data, type, row) { // 3
+                                return '<div class="dropdown">' +
+                                    '<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Actions</button>' +
+                                    '<div class="dropdown-menu">' +
+                                    '<a href="#" class="dropdown-item update-employee" data-id="' + row.Id + '">Update</a>' +
+                                    '<a href="#" class="dropdown-item delete-employee" data-id="' + row.Id + '">Delete</a>' +
+                                    '<a href="#" class="dropdown-item details-employee" data-id="' + row.Id + '">Details</a>' +
+                                    '</div>' +
+                                    '</div>';
+                            },
+                            searchable: false,
+                            orderable: false,
+                            "autowidth": true
+
+                        }
+                    ],
+                    // 'Blfrtip'
+                    "dom": "<'row'<'col-sm-2'l><'col-sm-2'><'col-sm-4'B><'col-sm-4'f>>"+
+                            "<'row'<'col-sm-12'tr>>"+
+                            "<'row'<'col-sm-3'i><'col-sm-3'><'col-sm-6'p>>"
+                
+                    ,
+                    "buttons": [
+                        { extend: 'copy',
+                            exportOptions: {
+                                columns: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+                            },
+
+                        },
+                       
+                        {
+                            extend: 'excel',
+                            exportOptions: {
+                                columns: [0,1, 2, 3, 4, 5, 6, 7, 8],
+                            },
+
+                        },
+                        {
+                            extend:'pdf',
+                            titleAttr:'Download PDF',
+                            orientation:'landscape',
+                            className:'downloadPDF',
+                            exportOptions:{
+                                columns:[1,2,3,4,5,6,7,8],
+                            },
+                        },{
+                            extend:'print',
+                            exportOptions:{
+                                columns:[1,2,3,4,5,6,7,8],
+                            },
+
+                        },
+
+
+                        
+                        {
+                            extend:'colvis',
+                        }
+                    ]
+                });
+
+
+                // Handle click events for Update, Delete, and Details links
+                $('#Employees').on('click', '.update-employee', function (e) {
+                    e.preventDefault();
+                    var employeeId = $(this).data('id');
+                    // Redirect to the Update action with the employeeId
+                    window.location.href = '/Employee/Update/' + employeeId;
+                });
+
+                $('#Employees').on('click', '.delete-employee', function (e) {
+                    e.preventDefault();
+                    var employeeId = $(this).data('id');
+                    // Redirect to the Delete action with the employeeId
+                    window.location.href = '/Employee/Delete/' + employeeId;
+                });
+
+                $('#Employees').on('click', '.details-employee', function (e) {
+                    e.preventDefault();
+                    var employeeId = $(this).data('id');
+                    // Redirect to the Details action with the employeeId
+                    window.location.href = '/Employee/Details/' + employeeId;
+                });
+
+            });
+
+           
+        });
+    </script>
+}
