@@ -1,4 +1,6 @@
 ﻿using FirstPro.DAL.Entities;
+using FirstPro.DAL.Extend;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace FirstPro.DAL.Database
 {
-   public  partial class ApplicationDbContext:DbContext
+   public  partial class ApplicationDbContext:IdentityDbContext<ApplicationUser,ApplicationRole,string>
     {
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> ops):base(ops)

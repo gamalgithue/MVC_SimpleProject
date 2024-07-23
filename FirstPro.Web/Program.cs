@@ -2,7 +2,10 @@ using FirstPro.BLL.Mapper;
 using FirstPro.BLL.Service.Interface;
 using FirstPro.BLL.Service.Repoistory;
 using FirstPro.DAL.Database;
+using FirstPro.DAL.Extend;
 using FirstPro.Web.Languages;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
@@ -17,7 +20,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews().
-    AddNewtonsoftJson(opt => {
+    AddNewtonsoftJson(opt =>
+    {
         opt.SerializerSettings.ContractResolver = new DefaultContractResolver();
     }).AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
 .AddDataAnnotationsLocalization(options =>
@@ -28,16 +32,21 @@ builder.Services.AddControllersWithViews().
 
 
 
+
 #region connectionstring
 var connectionstring = builder.Configuration.GetConnectionString("ApplicatonConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 options.UseSqlServer(connectionstring));
 #endregion
 
+
+
 #region AutoMapper
 builder.Services.AddAutoMapper(x => x.AddProfile(new DomainProfile()));
 #endregion
 
+
+#region services
 // Assuming you have a generic repository like GenericRepository<TEntity>
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
@@ -47,10 +56,49 @@ builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 builder.Services.AddScoped<ICountryService, CountryService>();
 builder.Services.AddScoped<ICityService, CityService>();
 builder.Services.AddScoped<IDistrictService, DistrictService>();
+#endregion
 
 
 
-//builder.Services.AddScoped<IDepartmentService, DepartmentService>();
+
+
+
+
+#region Microsoft Identity Configuration
+
+
+           builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+           .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme,
+            options =>
+            {
+           options.LoginPath = new PathString("/Account/Login");
+            options.AccessDeniedPath = new PathString("/Account/Login");
+         });
+                builder.Services.AddIdentityCore<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddTokenProvider<DataProtectorTokenProvider<ApplicationUser>>(TokenOptions.DefaultProvider);
+             builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
+          {
+
+              options.User.RequireUniqueEmail = true;
+              options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789@_-.+";
+           // Default Password settings.
+             options.Password.RequireDigit = true;
+             options.Password.RequireLowercase = true;
+              options.Password.RequireNonAlphanumeric = true;
+               options.Password.RequireUppercase = true;
+            options.Password.RequiredLength = 6;
+            options.Password.RequiredUniqueChars = 0;
+              }).AddEntityFrameworkStores<ApplicationDbContext>();
+
+
+#endregion
+
+
+
+
+
+
 
 var app = builder.Build();
 
@@ -85,11 +133,11 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Account}/{action=Login}/{id?}");
 
 app.Run();

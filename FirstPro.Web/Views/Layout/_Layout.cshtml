@@ -1,5 +1,6 @@
 ﻿@{
     var Culture = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
+     @inject SignInManager<ApplicationUser> _signinmanager;
 }
 <!DOCTYPE html>
 
@@ -182,7 +183,12 @@
                         }
 
                         <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+
+                        <form asp-controller="Account" asp-action="LogOff">
+                            <input type="submit" class="btn btn-danger btn-block" value="Sign Out" />
+                        </form>
+
+
                     </div>
                 </li>
                 <li class="nav-item">
@@ -212,8 +218,12 @@
                     <div class="image">
                         <img src="~/dist/img/gemy.jpg" class="img-circle elevation-2" alt="User Image">
                     </div>
+
                     <div class="info">
-                        <a href="#" class="d-block">Gamal Elbatawy</a>
+                    @if(_signinmanager.IsSignedIn(User))
+                    {
+                        <a href="#" class="d-block">@User.Identity.Name</a>
+                    }
                     </div>
                 </div>
 

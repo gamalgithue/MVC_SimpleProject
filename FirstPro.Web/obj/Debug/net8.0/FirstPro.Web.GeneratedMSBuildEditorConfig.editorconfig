@@ -26,6 +26,30 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\clt\source\repos\MVC_SimpleProject\FirstPro.Web
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/clt/source/repos/MVC_SimpleProject/FirstPro.Web/Views/Account/ConfirmForgetPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxDb25maXJtRm9yZ2V0UGFzc3dvcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/clt/source/repos/MVC_SimpleProject/FirstPro.Web/Views/Account/ConfirmResetPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxDb25maXJtUmVzZXRQYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/clt/source/repos/MVC_SimpleProject/FirstPro.Web/Views/Account/ForgetPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxGb3JnZXRQYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/clt/source/repos/MVC_SimpleProject/FirstPro.Web/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/clt/source/repos/MVC_SimpleProject/FirstPro.Web/Views/Account/Registration.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3RyYXRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/clt/source/repos/MVC_SimpleProject/FirstPro.Web/Views/Account/ResetPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZXNldFBhc3N3b3JkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/clt/source/repos/MVC_SimpleProject/FirstPro.Web/Views/Department/create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0bWVudFxjcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -72,6 +96,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/clt/source/repos/MVC_SimpleProject/FirstPro.Web/Views/Layout/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGF5b3V0XF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/clt/source/repos/MVC_SimpleProject/FirstPro.Web/Views/Layout/_Layout2.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGF5b3V0XF9MYXlvdXQyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/clt/source/repos/MVC_SimpleProject/FirstPro.Web/Views/_ViewImports.cshtml]

@@ -1,9 +1,12 @@
 ﻿using FirstPro.Web.Languages;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 
 namespace FirstPro.Web.Controllers
 {
+
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly IStringLocalizer<SharedResource> stringlocalizer;
