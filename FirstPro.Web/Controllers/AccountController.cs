@@ -1,8 +1,11 @@
 ﻿using FirstPro.BLL.Helper;
 using FirstPro.BLL.Modals;
 using FirstPro.DAL.Extend;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
+using System.Security.Claims;
 
 namespace FirstPro.Web.Controllers
 {
@@ -78,12 +81,13 @@ namespace FirstPro.Web.Controllers
             var result = await _usermanager.ConfirmEmailAsync(user, token);
             if (result.Succeeded)
             {
-                return View("Login");
+                return View();
             }
 
             ViewBag.ErrorTitle = "Email cannot be confirmed";
             return View("Error");
         }
+       
 
         // rest of the code
     
@@ -93,18 +97,29 @@ namespace FirstPro.Web.Controllers
     #region Login
 
           [HttpGet]
-        public IActionResult Login()
+        public async Task<IActionResult> Login(string returnUrl="")
         {
-            return View();
-        }
-        [HttpPost]
-        public async Task<IActionResult> Login(LoginDTO login)
-        {
-            var user = await _usermanager.FindByEmailAsync(login.Email);
 
-
-            if (ModelState.IsValid)
+            LoginDTO login = new LoginDTO
             {
+                ReturnUrl = returnUrl,
+                ExternalLogins =
+        (await _signinmanager.GetExternalAuthenticationSchemesAsync()).ToList()
+            };
+
+            return View(login);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginDTO login,string returnUrl="")
+        {
+
+
+           
+
+            
+                var user = await _usermanager.FindByEmailAsync(login.Email);
+
                 var result = await _signinmanager.PasswordSignInAsync(user, login.Password, login.RememberMe, false);
 
 
@@ -118,13 +133,103 @@ namespace FirstPro.Web.Controllers
                     ModelState.AddModelError("", "Invalid UserName Or Password");
 
                 }
-            }
+            
         
 
             return View(login);
         }
 
 
+        [AllowAnonymous]
+        [HttpPost]
+        public IActionResult ExternalLogin(string provider, string returnUrl)
+        {
+            var redirectUrl = Url.Action("ExternalLoginCallback", "Account",
+                                new { ReturnUrl = returnUrl });
+            var properties = _signinmanager
+                .ConfigureExternalAuthenticationProperties(provider, redirectUrl);
+            return new ChallengeResult(provider, properties);
+        }
+        [AllowAnonymous]
+        public async Task<IActionResult> ExternalLoginCallback(string returnUrl=null, string remoteError=null)
+        {
+            returnUrl = returnUrl ?? Url.Content("~/");
+
+            LoginDTO model = new LoginDTO
+            {
+                ReturnUrl = returnUrl,
+                ExternalLogins =
+                        (await _signinmanager.GetExternalAuthenticationSchemesAsync()).ToList()
+            };
+
+            if (remoteError != null)
+            {
+                ModelState
+                    .AddModelError(string.Empty, $"Error from external provider: {remoteError}");
+
+                return View("Login", model);
+            }
+
+            // Get the login information about the user from the external login provider
+            var info = await _signinmanager.GetExternalLoginInfoAsync();
+            if (info == null)
+            {
+                ModelState
+                    .AddModelError(string.Empty, "Error loading external login information.");
+
+                return View("Login", model);
+            }
+            // If the user already has a login (i.e if there is a record in AspNetUserLogins
+            // table) then sign-in the user with this external login provider
+            var signInResult = await _signinmanager.ExternalLoginSignInAsync(info.LoginProvider,
+                info.ProviderKey, isPersistent: false, bypassTwoFactor: true);
+
+            if (signInResult.Succeeded)
+            {
+                return LocalRedirect(returnUrl);
+            }
+            // If there is no record in AspNetUserLogins table, the user may not have
+            // a local account
+            else
+            {
+                // Get the email claim value
+                var email = info.Principal.FindFirstValue(ClaimTypes.Email);
+
+                if (email != null)
+                {
+                    // Create a new user without password if we do not have a user already
+                    var user = await _usermanager.FindByEmailAsync(email);
+
+                    if (user == null)
+                    {
+                        user = new ApplicationUser
+                        {
+                            UserName = info.Principal.FindFirstValue(ClaimTypes.Email),
+                            Email = info.Principal.FindFirstValue(ClaimTypes.Email)
+                        };
+
+                        await _usermanager.CreateAsync(user);
+                        //var token = await _usermanager.GenerateEmailConfirmationTokenAsync(user);
+
+                        //var confirmationLink = Url.Action("ConfirmEmail", "Account",
+                        //                new { userId = user.Id, token = token }, Request.Scheme);
+                        //MailSender.Mail("gemyelbatawy@gmail.com", "Email Confirmation", "Please Confirm Your Email " + confirmationLink);
+
+                    }
+                    // Add a login (i.e insert a row for the user in AspNetUserLogins table)
+                    await _usermanager.AddLoginAsync(user, info);
+                    await _signinmanager.SignInAsync(user, isPersistent: false);
+
+                    return LocalRedirect(returnUrl);
+                }
+
+                // If we cannot find the user email we cannot continue
+                ViewBag.ErrorTitle = $"Email claim not received from: {info.LoginProvider}";
+                ViewBag.ErrorMessage = "Please contact support on Pragim@PragimTech.com";
+
+                return View("Error");
+            }
+        }
 
         #endregion
 
@@ -132,14 +237,14 @@ namespace FirstPro.Web.Controllers
 
         #region SignOut
         [HttpPost]
-        public async  Task<IActionResult> LogOff()
-        {
+                     public async  Task<IActionResult> LogOff()
+                      {
 
-            await _signinmanager.SignOutAsync();
-            return RedirectToAction("Login");
+                       await _signinmanager.SignOutAsync();
+                        return RedirectToAction("Login");
 
-        }
-        #endregion
+                       }
+                      #endregion
 
 
         #region Forget Password

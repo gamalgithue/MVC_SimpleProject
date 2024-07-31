@@ -67,7 +67,7 @@ builder.Services.AddScoped<IDistrictService, DistrictService>();
 #region Microsoft Identity Configuration
 
 
-           builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
            .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme,
             options =>
             {
@@ -95,7 +95,24 @@ builder.Services.AddScoped<IDistrictService, DistrictService>();
 #endregion
 
 
+#region GoogleAuthentication
 
+
+builder.Services.AddAuthentication()
+    .AddGoogle(
+    options =>
+    {
+        options.ClientId = "648016958853-j5a9le25ahp3gsqd9a66hf9p3blpgo6d.apps.googleusercontent.com";
+        options.ClientSecret = "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";
+    })
+    .AddFacebook(
+    options =>
+    {
+        options.AppId = "446015967864924";
+        options.AppSecret = "b80886a15b4a1869b4f5d6c47525aebc";
+    }
+    );
+#endregion
 
 
 
@@ -138,6 +155,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Account}/{action=Login}/{id?}");
+    pattern: "{controller=Home}/{action=index}/{id?}");
 
 app.Run();

@@ -807,3 +807,9 @@ C:\Users\clt\source\repos\MVC_SimpleProject\FirstPro.Web\bin\Debug\net8.0\Micros
 C:\Users\clt\source\repos\MVC_SimpleProject\FirstPro.Web\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 C:\Users\clt\source\repos\MVC_SimpleProject\FirstPro.Web\bin\Debug\net8.0\Microsoft.Extensions.Identity.Core.dll
 C:\Users\clt\source\repos\MVC_SimpleProject\FirstPro.Web\bin\Debug\net8.0\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\clt\source\repos\MVC_SimpleProject\FirstPro.Web\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.Google.dll
+C:\Users\clt\source\repos\MVC_SimpleProject\FirstPro.Web\obj\Debug\net8.0\FirstPro.Web.Properties.Resources.resources
+C:\Users\clt\source\repos\MVC_SimpleProject\FirstPro.Web\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.Facebook.dll
+C:\Users\clt\source\repos\MVC_SimpleProject\FirstPro.Web\bin\Debug\net8.0\Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll
+C:\Users\clt\source\repos\MVC_SimpleProject\FirstPro.Web\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\clt\source\repos\MVC_SimpleProject\FirstPro.Web\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll

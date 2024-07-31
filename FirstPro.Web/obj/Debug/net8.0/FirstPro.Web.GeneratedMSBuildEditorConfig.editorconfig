@@ -26,6 +26,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\clt\source\repos\MVC_SimpleProject\FirstPro.Web
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/clt/source/repos/MVC_SimpleProject/FirstPro.Web/Views/Account/ConfirmEmail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxDb25maXJtRW1haWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/clt/source/repos/MVC_SimpleProject/FirstPro.Web/Views/Account/ConfirmForgetPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxDb25maXJtRm9yZ2V0UGFzc3dvcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

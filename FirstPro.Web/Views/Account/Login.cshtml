@@ -15,7 +15,11 @@
 
                 <form asp-controller="Account" asp-action="Login" method="post">
                     <div asp-validation-summary="All" class="text-danger"></div>
+  
 
+@*                     <p>@ViewBag.ErrorTitle</p>
+ *@
+      
                     <div class="input-group mb-3">
                         <input type="email" class="form-control" asp-for="Email" placeholder="Email">
                         <div class="input-group-append">
@@ -43,14 +47,14 @@
                         </div>
                         <!-- /.col -->
                         <div class="col-4">
-                            <input type="submit" class="btn btn-primary btn-block" value="Sign In" />
+                            <input type="submit" class="btn btn-primary btn-block" value="Sign In" style="margin-bottom:15px" />
 
                         </div>
                         <!-- /.col -->
                     </div>
                 </form>
 
-                <div class="social-auth-links text-center mb-3">
+              @*   <div class="social-auth-links text-center mb-3">
                     <p>- OR -</p>
                     <a href="#" class="btn btn-block btn-primary">
                         <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
@@ -58,9 +62,45 @@
                     <a href="#" class="btn btn-block btn-danger">
                         <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
                     </a>
-                </div>
+                </div> *@
                 <!-- /.social-auth-links -->
 
+                <div>
+                    
+                        @if ((Model.ExternalLogins?.Count ?? 0) == 0)
+                        {
+                            <div>No external logins configured</div>
+                        }
+                        else
+
+                        {
+                            <form method="post" asp-controller="Account" asp-action="ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl">
+                                <div>
+                                    @foreach (var provider in Model.ExternalLogins)
+                                    {
+                                        @if (provider.DisplayName == "Facebook")
+                                        {
+                                            <button type="submit" class="btn btn-block btn-primary"
+                                            name="provider" value="@provider.Name"
+                                            title="Sign using your @provider.DisplayName">
+                                                <i class="fab fa-facebook mr-2"></i>Sign In Using @provider.DisplayName
+                                            </button>
+                                        }
+                                        else
+                                        {
+                                            <button type="submit" class="btn btn-block btn-danger"
+                                                    name="provider" value="@provider.Name"
+                                                    title="Sign using your @provider.DisplayName">
+                                                <i class="fab fa-google-plus mr-2"></i>Sign In Using @provider.DisplayName
+                                            </button>
+                                        }
+                                       
+                                    }
+                                </div>
+                            </form>
+                        
+                    }
+                </div>
                 <p class="mb-1">
                     <a asp-controller="Account" asp-action="ForgetPassword">I forgot my password</a>
                 </p>
