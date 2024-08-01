@@ -1,4 +1,6 @@
 ﻿@model IEnumerable<EmployeeDTO>
+@inject SignInManager<ApplicationUser> _signinmanager
+
 
 @{
     ViewBag.Title= SharedLocalizer["Employee"];
@@ -51,9 +53,11 @@
                 </div> *@
                 <div class="col-3"></div>
                 <div class="col-4">
+                    @if (_signinmanager.IsSignedIn(User) && !(User.IsInRole("HR"))){
                     <a asp-controller="Employee" asp-action="Create" class="btn btn-outline-primary">
                         <i class="fa-solid fa-plus"></i>&nbsp; @SharedLocalizer["CNE"]
                     </a>
+                    }
                 </div>
 
             </div>

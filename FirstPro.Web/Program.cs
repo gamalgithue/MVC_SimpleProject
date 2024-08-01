@@ -75,6 +75,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
             options.AccessDeniedPath = new PathString("/Account/Login");
          });
                 builder.Services.AddIdentityCore<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                 .AddRoles<ApplicationRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddTokenProvider<DataProtectorTokenProvider<ApplicationUser>>(TokenOptions.DefaultProvider);
              builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
@@ -102,14 +103,14 @@ builder.Services.AddAuthentication()
     .AddGoogle(
     options =>
     {
-        options.ClientId = "648016958853-j5a9le25ahp3gsqd9a66hf9p3blpgo6d.apps.googleusercontent.com";
-        options.ClientSecret = "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";
+        options.ClientId = builder.Configuration["ExternalLogins:Google:ClientId"];
+        options.ClientSecret = builder.Configuration["ExternalLogins:Google:ClientSecret"];
     })
     .AddFacebook(
     options =>
     {
-        options.AppId = "446015967864924";
-        options.AppSecret = "b80886a15b4a1869b4f5d6c47525aebc";
+        options.AppId = builder.Configuration["ExternalLogins:Facebook:AppId"];
+        options.AppSecret = builder.Configuration["ExternalLogins:Facebook:AppSecret"];
     }
     );
 #endregion

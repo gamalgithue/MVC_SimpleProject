@@ -1,6 +1,7 @@
 ﻿@{
     var Culture = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
-     @inject SignInManager<ApplicationUser> _signinmanager;
+@inject SignInManager<ApplicationUser> _signinmanager;
+
 }
 <!DOCTYPE html>
 
@@ -35,13 +36,13 @@
     <script src="~/font-awesome/js/all.min.js"></script>
     <script nonce="844af892-4491-43cb-9b93-737d10cbb97b">
         try { (function(w,d){!function(o,p,q,r){o[q]=o[q]||{};o[q].executed=[];o.zaraz={deferred:[],listeners:[]};o.zaraz.q=[];o.zaraz._f=function(s){return async function(){var t=Array.prototype.slice.call(arguments);o.zaraz.q.push({m:s,a:t})}};for(const u of["track","set","debug"])o.zaraz[u]=o.zaraz._f(u);o.zaraz.init=()=>{var v=p.getElementsByTagName(r)[0],w=p.createElement(r),x=p.getElementsByTagName("title")[0];x&&(o[q].t=p.getElementsByTagName("title")[0].text);o[q].x=Math.random();o[q].w=o.screen.width;o[q].h=o.screen.height;o[q].j=o.innerHeight;o[q].e=o.innerWidth;o[q].l=o.location.href;o[q].r=p.referrer;o[q].k=o.screen.colorDepth;o[q].n=p.characterSet;o[q].o=(new Date).getTimezoneOffset();if(o.dataLayer)for(const B of Object.entries(Object.entries(dataLayer).reduce(((C,D)=>({...C[1],...D[1]})),{})))zaraz.set(B[0],B[1],{scope:"page"});o[q].q=[];for(;o.zaraz.q.length;){const E=o.zaraz.q.shift();o[q].q.push(E)}w.defer=!0;for(const F of[localStorage,sessionStorage])Object.keys(F||{}).filter((H=>H.startsWith("_zaraz_"))).forEach((G=>{try{o[q]["z_"+G.slice(7)]=JSON.parse(F.getItem(G))}catch{o[q]["z_"+G.slice(7)]=F.getItem(G)}}));w.referrerPolicy="origin";w.src="/cdn-cgi/zaraz/s.js?z="+btoa(encodeURIComponent(JSON.stringify(o[q])));v.parentNode.insertBefore(w,v)};["complete","interactive"].includes(p.readyState)?zaraz.init():o.addEventListener("DOMContentLoaded",zaraz.init)}(w,d,"zarazData","script");})(window,document) } catch (err) {
-              console.error('Failed to run Cloudflare Zaraz: ', err)
-              fetch('/cdn-cgi/zaraz/t', {
-                credentials: 'include',
-                keepalive: true,
-                method: 'GET',
-              })
-            };</script>
+        console.error('Failed to run Cloudflare Zaraz: ', err)
+        fetch('/cdn-cgi/zaraz/t', {
+        credentials: 'include',
+        keepalive: true,
+        method: 'GET',
+        })
+        };</script>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -162,7 +163,7 @@
                         @if (Culture == "ar-EG")
                         {
                             <a class="dropdown-item d-flex justify-content-between"
-                               href="@Url.Action("SetLanguage","Language", new {
+                            href="@Url.Action("SetLanguage","Language", new {
                                                   culture = "en-US",
                                                   returnUrl = Context.Request.Path + Context.Request.QueryString
                                               })
@@ -170,14 +171,15 @@
                                 <img src="~/dist/img/usa.jpg" width="25" height="15" class="mt-1" />
                                 <span>@SharedLocalizer["En"]</span>
                             </a>
-                        }else{
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item d-flex justify-content-between"
-                               href="@Url.Action("SetLanguage", "Language", new {
+                        } else {
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item d-flex justify-content-between"
+                            href="@Url.Action("SetLanguage", "Language", new {
                                                   culture = "ar-EG",
                                                   returnUrl = Context.Request.Path + Context.Request.QueryString
-                                              })">
-                            <img src="~/dist/img/Egypt.jpg" width="25" height="15" class="mt-1" />
+                                              })
+                            ">
+                                <img src="~/dist/img/Egypt.jpg" width="25" height="15" class="mt-1" />
                                 <span>@SharedLocalizer["Ar"]</span>
                             </a>
                         }
@@ -220,10 +222,10 @@
                     </div>
 
                     <div class="info">
-                    @if(_signinmanager.IsSignedIn(User))
-                    {
-                        <a href="#" class="d-block">@User.Identity.Name</a>
-                    }
+                        @if (_signinmanager.IsSignedIn(User))
+                        {
+                            <a href="#" class="d-block">@User.Identity.Name</a>
+                        }
                     </div>
                 </div>
 
@@ -256,53 +258,82 @@
                                         <p>Home</p>
                                     </a>
                                 </li>
-                              
+
                             </ul>
                         </li>
 
 
 
-                      
-                       
-                        <li class="nav-header">Main Features</li>
+
+                        @if (_signinmanager.IsSignedIn(User) && (User.IsInRole("Admin")) || (User.IsInRole("HR")))
+                        {
+                            <li class="nav-header">Main Features</li>
 
 
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-tree"></i>
+                                    <p>
+                                        Employees
+                                        <i class="fas fa-angle-left right"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a asp-controller="Employee" asp-action="Index" class="nav-link">
+                                            <i class="fa-solid fa-user-large"></i>
+                                            <p>Employees Card</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-tree"></i>
+                                    <p>
+                                        Departments
+                                        <i class="fas fa-angle-left right"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a asp-controller="Department" asp-action="Index" class="nav-link">
+                                            <i class="fa-solid fa-building-user"></i>
+                                            <p>Department Card</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                        }
+                        @if (_signinmanager.IsSignedIn(User) && (User.IsInRole("Admin"))) {
+                        <li class="nav-header">User Management</li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-tree"></i>
                                 <p>
-                                  Employees
+                                    Manage Users
                                     <i class="fas fa-angle-left right"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a asp-controller="Employee" asp-action="Index" class="nav-link">
+                                    <a asp-controller="UserManagement" asp-action="Index" class="nav-link">
                                         <i class="fa-solid fa-user-large"></i>
-                                        <p>Employees Card</p>
+                                        <p>Users</p>
                                     </a>
                                 </li>
-                          </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-tree"></i>
-                                <p>
-                                    Departments
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a asp-controller="Department" asp-action="Index" class="nav-link">
-                                        <i class="fa-solid fa-building-user"></i>
-                                        <p>Department Card</p>
+                                    <a asp-controller="RoleManagement" asp-action="Index" class="nav-link">
+                                        <i class="fa-solid fa-user-large"></i>
+                                        <p>Roles</p>
                                     </a>
                                 </li>
                             </ul>
                         </li>
-                        
-                       </nav>
+                        }
+
+                </nav>
 
             </div>
             </aside>

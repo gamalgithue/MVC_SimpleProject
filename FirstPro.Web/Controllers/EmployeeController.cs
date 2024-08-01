@@ -9,9 +9,12 @@ using Microsoft.EntityFrameworkCore;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using System.Net;
 using System.Reflection;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FirstPro.Web.Controllers
 {
+
+    [Authorize(Roles ="Admin,HR")]
     public class EmployeeController : Controller
     {
 
@@ -52,7 +55,7 @@ namespace FirstPro.Web.Controllers
 
             return View(result);
         }
-        [HttpGet]
+        [HttpGet,Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create()
         {
             ViewBag.DepartmentList = new SelectList(await department.getDepartmentsAsync(), "Id", "Name");
@@ -60,7 +63,7 @@ namespace FirstPro.Web.Controllers
             return View();
         }
 
-        [HttpPost]
+        [HttpPost, Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create(EmployeeDTO employeevm)
         {
 

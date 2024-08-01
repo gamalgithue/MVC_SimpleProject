@@ -47,7 +47,7 @@ namespace FirstPro.Web.Controllers
 
                     var confirmationLink = Url.Action("ConfirmEmail", "Account",
                         new { userId = user.Id, token = token }, Request.Scheme);
-                    MailSender.Mail("gemyelbatawy@gmail.com", "Email Confirmation", "Please Confirm Your Email " + confirmationLink);
+                    MailSender.Mail(user.Email, "Email Confirmation", "Please Confirm Your Email " + confirmationLink);
 
                     return RedirectToAction("Login");
                 }
@@ -275,7 +275,7 @@ namespace FirstPro.Web.Controllers
 
                     var passwordResetLink = Url.Action("ResetPassword", "Account", new { Email = model.Email, Token = token }, Request.Scheme);
 
-                    MailSender.Mail("gemyelbatawy@gmail.com", "ResetPassword", "Please Reset Your Password " + passwordResetLink);
+                    MailSender.Mail(user.Email, "ResetPassword", "Please Reset Your Password " + passwordResetLink);
 
 
                     //logger.Log(LogLevel.Warning, passwordResetLink);
@@ -336,6 +336,10 @@ namespace FirstPro.Web.Controllers
             return View(model);
 
 
+        }
+        public IActionResult AccessDenied()
+        {
+            return RedirectToAction("Login");
         }
 
         #endregion

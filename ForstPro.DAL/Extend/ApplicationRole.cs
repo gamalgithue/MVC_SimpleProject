@@ -17,5 +17,7 @@ namespace FirstPro.DAL.Extend
         }
         public bool IsActive { get; set; }
         public string CreatedOn { get; set; }
+        public string? CreatedBy { get; set; }
+
     }
 }

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FirstPro.Web")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a25f828bbaacba126f4dc06ca76fde7e245485a8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e4af72bb8dcace122dfe3ef1bb6e1ba68a6e2a2a")]
 [assembly: System.Reflection.AssemblyProductAttribute("FirstPro.Web")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FirstPro.Web")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

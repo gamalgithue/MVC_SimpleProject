@@ -1,0 +1,63 @@
+﻿@model List<UserInRoleDTO>
+@{
+    ViewData["Title"] = "AddOrRemoveUser";
+    Layout = "~/Views/Layout/_Layout.cshtml";
+}
+<br />
+
+<br />
+
+<div class="content-wrapper">
+
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Role Management</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Manage Roles</a></li>
+
+                        <li class="breadcrumb-item active">Roles</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<form method="post" class="form-group" >
+
+    <div class="card-header">
+        <h2>Add Or Remove User In Role</h2>
+    </div>
+
+
+    @for (int i = 0; i < Model.Count; i++)
+    {
+@* 
+        <input asp-for="@Model[i].IsSelected" type="checkbox" style="width:px" class="filled-in">
+        <label asp-for="@Model[i].IsSelected">@Model[i].UserName</label> *@
+            <div style="display:flex; align-items: center; margin-left:20px;">
+                <input asp-for="@Model[i].IsSelected" type="checkbox" class="filled-in" style="margin-right:10px;transform: scale(2);">
+                <label asp-for="@Model[i].IsSelected">@Model[i].UserName</label>
+            </div>
+
+        <input type="hidden" asp-for="@Model[i].UserId" />
+        <input type="hidden" asp-for="@Model[i].UserName" />
+
+    }
+
+    <div class="card-footer">
+        <input type="submit" value="Assign" class="btn btn-primary" />
+            <a asp-controller="RoleManagement" asp-action="Index" class="btn btn-danger">Cancle</a>
+
+    </div>
+
+
+</form>
+
+ 
+
+        </div>
