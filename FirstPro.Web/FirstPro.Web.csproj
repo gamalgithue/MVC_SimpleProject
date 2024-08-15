@@ -38,4 +38,9 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\Docs\Cvs\" />
+    <Folder Include="wwwroot\Docs\Photos\" />
+  </ItemGroup>
+
 </Project>

@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FirstPro.DAL", "ForstPro.DA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FirstPro.BLL", "FirstPro.BLL\FirstPro.BLL.csproj", "{6F9B7800-90F8-4391-B9B6-7FB739EE555B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirstPro.API", "FirstPro.API\FirstPro.API.csproj", "{0502F521-5048-4952-AED0-F03983BAB0CB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{6F9B7800-90F8-4391-B9B6-7FB739EE555B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F9B7800-90F8-4391-B9B6-7FB739EE555B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F9B7800-90F8-4391-B9B6-7FB739EE555B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0502F521-5048-4952-AED0-F03983BAB0CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0502F521-5048-4952-AED0-F03983BAB0CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0502F521-5048-4952-AED0-F03983BAB0CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0502F521-5048-4952-AED0-F03983BAB0CB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

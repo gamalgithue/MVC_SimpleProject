@@ -1,4 +1,5 @@
 ﻿using FirstPro.DAL.Entities;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -34,8 +35,15 @@ namespace FirstPro.BLL.Modals
         public bool IsActive { get; set; }
 
 
-        [Required(ErrorMessage ="Date Is Required")]
+        [Required(ErrorMessage = "Date Is Required")]
         public DateTime CreationDate { get; set; }
+        
+        public string? PhotoName { get; set; }
+        public string? CvName { get; set; }
+
+         public IFormFile Photo { get; set; }
+        public IFormFile Cv { get; set; }
+
 
         public int DepartmentId { get; set; }
         public Department? Department { get; set; }

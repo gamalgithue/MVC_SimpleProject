@@ -65,7 +65,7 @@
 
         <center>
             <div class="card-body">
-            <table id="Employees" class="table table-bordered table-striped" style="width:100%">
+                <table id="Employees" class="table table-bordered table-striped" style="width:100%">
                 <thead>
                     <tr>
                             <th> @SharedLocalizer["ID"]</th>
@@ -82,6 +82,8 @@
                         <th>@SharedLocalizer["Country"]</th>
                         <th>@SharedLocalizer["City"]</th>
                         <th>@SharedLocalizer["District"]</th>
+                      @*   <th>Image</th>
+                        <th>Cv</th> *@
                             <th>@SharedLocalizer["Actions"]</th>
 
 
@@ -120,7 +122,16 @@
                             <td>
                                 @item.DistrictName
                             </td>
-
+                           
+                           
+                               @*  <td>
+                                    <img src="~/Docs/Photos/@item.PhotoName" width="50" height="50" />
+                                </td>
+                                <td>
+                                    <a href="~/Docs/Cvs/@item.CvName" download="download" target="_blank">
+                                        Download Cv
+                                    </a>
+                                </td> *@
                             <td>
                                 @* <a class="btn btn-outline-success" asp-action="Update" asp-controller="Employee" asp-route-Id="@item.Id">
                                     <i class="fa-solid fa-pencil"></i>
@@ -208,7 +219,23 @@
                         { "data": "DepartmentName", "name": "DepartmentName", "autowidth": true },// 5
                         { "data": "CountryName", "name": "CountryName", "autowidth": true },// 6
                         { "data": "CityName", "name": "CityName", "autowidth": true },// 7
-                        { "data": "DistrictName", "name": "DistrictName", "autowidth": true },//8 
+                        { "data": "DistrictName", "name": "DistrictName", "autowidth": true },//8
+                        // { "data": "PhotoName", "name": "PhotoName", "autowidth": true },//9
+                        // { "data": "CvName", "name": "CvName", "autowidth": true },//10
+
+                        // {
+                        //     "data": "PhotoName",
+                        //     "render": function (data, type, row) {
+                        //         return '<img src="' + data + '" width="100" height="100" />';
+                        //     }
+                        // },
+                        // {
+                        //     "data": "CvName",
+                        //     "render": function (data, type, row) {
+                        //         return '<a href="' + data + '" target="_blank">View CV</a>';
+                        //     }
+                        // },
+
 
 
 

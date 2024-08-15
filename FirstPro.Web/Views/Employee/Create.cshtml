@@ -31,7 +31,7 @@
 
     <div class="row"> *@
 
-    <form method="post" class="form-group" asp-action="Create" asp-controller="Employee">
+    <form method="post" class="form-group" asp-action="Create" asp-controller="Employee" enctype="multipart/form-data"> 
         <div class="border p-3 mt-4">
             <div class="row pb-2">
                 <h2 class="text-primary">@SharedLocalizer["NE"]</h2>
@@ -141,8 +141,17 @@
             </div>
           
 
+           @*  <div class="mb-3">
+            <label asp-for="Cv">Cv</label>
+            <input type="file"  asp-for="Cv" class="form-control"  accept=".pdf" multiple/>
 
+                 </div>
+            <div class="mb-3">
+                <label asp-for="Photo">Photo</label>
+                <input type="file" asp-for="Photo" class="form-control" />
 
+            </div>
+ *@
             <br />
             <input type="submit" class="btn btn-primary" value=@SharedLocalizer["Save"] />
 

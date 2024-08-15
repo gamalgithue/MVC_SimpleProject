@@ -10,6 +10,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 using System.Net;
 using System.Reflection;
 using Microsoft.AspNetCore.Authorization;
+using FirstPro.BLL.Helper;
 
 namespace FirstPro.Web.Controllers
 {
@@ -71,6 +72,10 @@ namespace FirstPro.Web.Controllers
             {
                 if (ModelState.IsValid)
                 {
+
+                    //employeevm.CvName = FileUploader.Upload("Cvs", employeevm.Cv);
+                    //employeevm.PhotoName = FileUploader.Upload("Photos", employeevm.Photo);
+
                     await employee.CreateOrUpdateEmployeeAsync(employeevm);
                     return RedirectToAction("Index");
 
@@ -155,6 +160,8 @@ namespace FirstPro.Web.Controllers
         {
 
             await employee.DeleteEmployeeAsync(employeevm);
+            //employeevm.CvName = FileUploader.RemoveFile("Cvs", employeevm.Cv);
+            //employeevm.PhotoName = FileUploader.RemoveFile("Photos", employeevm.Photo);
 
             return RedirectToAction("Index");
         }
@@ -228,6 +235,9 @@ namespace FirstPro.Web.Controllers
                                 DistrictName = Employee.District.Name,
                                 CityName = Employee.District.City.Name,
                                 CountryName = Employee.District.City.Country.Name
+                                //CvName=Employee.CvName,
+                                // PhotoName=Employee.PhotoName
+                                
                             });
 
 

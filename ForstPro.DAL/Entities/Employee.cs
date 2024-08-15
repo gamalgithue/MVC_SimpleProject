@@ -24,6 +24,9 @@ namespace FirstPro.DAL.Entities
 
         public DateTime CreationDate { get; set; }
 
+        public string? CvName { get; set; }
+        public string? PhotoName { get; set; }
+
         public int DepartmentId { get; set; }
         public Department? Department { get; set; }
         public int? DistrictId { get; set; }

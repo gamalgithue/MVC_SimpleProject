@@ -1,6 +1,22 @@
 {
   "Files": [
     {
+      "Id": "C:\\Users\\clt\\source\\repos\\MVC_SimpleProject\\FirstPro.Web\\wwwroot\\Docs\\Cvs\\54666e5c-c70b-41a6-be5e-b7e812500357Resume.pdf",
+      "PackagePath": "staticwebassets\\Docs\\Cvs\\54666e5c-c70b-41a6-be5e-b7e812500357Resume.pdf"
+    },
+    {
+      "Id": "C:\\Users\\clt\\source\\repos\\MVC_SimpleProject\\FirstPro.Web\\wwwroot\\Docs\\Cvs\\ae55ee4f-d221-460f-8cc9-c07c42695e07GamalElbatawy_CV.pdf",
+      "PackagePath": "staticwebassets\\Docs\\Cvs\\ae55ee4f-d221-460f-8cc9-c07c42695e07GamalElbatawy_CV.pdf"
+    },
+    {
+      "Id": "C:\\Users\\clt\\source\\repos\\MVC_SimpleProject\\FirstPro.Web\\wwwroot\\Docs\\Photos\\54057fd4-b7e2-47f8-a2fb-dafcf0211b08ecpc photo.jpeg",
+      "PackagePath": "staticwebassets\\Docs\\Photos\\54057fd4-b7e2-47f8-a2fb-dafcf0211b08ecpc photo.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\clt\\source\\repos\\MVC_SimpleProject\\FirstPro.Web\\wwwroot\\Docs\\Photos\\6b5bd07a-5b5d-49de-af92-3e2ea06656caGamalElbatawy_CV.pdf",
+      "PackagePath": "staticwebassets\\Docs\\Photos\\6b5bd07a-5b5d-49de-af92-3e2ea06656caGamalElbatawy_CV.pdf"
+    },
+    {
       "Id": "C:\\Users\\clt\\source\\repos\\MVC_SimpleProject\\FirstPro.Web\\wwwroot\\dist\\css\\Main.css",
       "PackagePath": "staticwebassets\\dist\\css\\Main.css"
     },

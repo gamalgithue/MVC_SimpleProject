@@ -1,0 +1,96 @@
+﻿@model ApplicationUser
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Layout/_Layout.cshtml";
+}
+
+<br />
+<br />
+<div class="content-wrapper">
+
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Dashboard</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Users</a></li>
+                        <li class="breadcrumb-item active">Delete</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    @*  <section class="content">
+    <div class="container-fluid">
+
+    <div class="row"> *@
+
+    <form method="post" asp-action="Delete" asp-controller="UserManagement">
+        <div class="border p-3 mt-4">
+            <div class="row pb-2">
+                <h2 class="text-primary">Delete @Model.UserName User</h2>
+                <hr />
+            </div>
+            <div asp-validation-summary="All" class="text-danger">
+            </div>
+            <input type="hidden" asp-for="Id" />
+
+            <div class="mb-3">
+                <label asp-for="UserName"></label>
+                <input asp-for="UserName" class="form-control" readonly />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+
+
+
+
+            </div>
+            <div class="mb-3">
+                <label asp-for="Email"></label>
+                <input asp-for="Email" class="form-control" readonly />
+                <span asp-validation-for="Email" class="text-danger"></span>
+
+
+
+
+            </div>
+            <div class="mb-3">
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" asp-for="IsAgree" readonly>
+                    <label class="form-check-label" asp-for="IsAgree">Is Active</label>
+                    <span asp-validation-for="IsAgree" class="text-danger"></span>
+
+                </div>
+            </div>
+
+
+
+            <br />
+            <center>
+                <input type="submit" class="btn btn-primary" value="Delete" />
+
+                <a asp-controller="UserManagement" asp-action="Update" asp-route-id="@Model.Id" class="btn btn-success" style="width=150px;"> Update</a>
+
+
+                <a asp-controller="UserManagement" asp-action="Index" class="btn btn-secondary" style="width=150px"> Back To items</a>
+            </center>
+
+
+        </div>
+
+    </form>
+    @*  </div>
+    </div>
+
+    </section> *@
+
+
+</div>
+@section JqueryValidation {
+    <script src="~/plugins/jquery-validation/jquery.validate.min.js"></script>
+    <script src="~/plugins/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
