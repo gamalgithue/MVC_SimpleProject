@@ -12,12 +12,14 @@
 ##### -Created Custom DataTable with the server-side, Search Filter, Ordering and Pagination.
 ##### -Exported this datatable in PDF and Excel.
 ##### -Supported Multi Languages.
+##### -Used 3-tier architecture  and Design Patterns
 
 ##### Tools
 
 ##### ASP.NET Core 8.0
 ##### Microsoft Sql Server
 ##### Html, Css, Bootstrap, Jquery and Ajax
+
 
 
 
