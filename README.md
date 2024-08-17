@@ -5,6 +5,9 @@
 
 
 ![Admin_Dashboard](https://github.com/user-attachments/assets/07c1c3d9-bf1a-4022-959c-be7d28d80b6a)
+![Data_table1](https://github.com/user-attachments/assets/5e00a946-a575-45f5-906d-e12ee5351fb2)
+![Data_table2](https://github.com/user-attachments/assets/30fd311f-c40e-4e58-a160-c0365b8bc0f8)
+
 
 # Features
  * Created User Authentication, Authorization and privileges.
