@@ -27,7 +27,7 @@
   * BootStrap
   * JQuery
   * Ajax
-* Design Patterns
+* Design Patterns:
   * Repository Pattern
   * Dependency injection 
   * Solid Principles
