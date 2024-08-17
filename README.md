@@ -17,7 +17,7 @@
 
 # Technologies used 
 
-* Back-End
+* Back-End:
   * ASP.NET Core 8.0
   * Microsoft Sql Server
   * MVC Pattern
@@ -25,7 +25,7 @@
   * HTML
   * CSS
   * BootStrap
-  * JQery
+  * JQuery
   * Ajax
 * Design Patterns
   * Repository Pattern
