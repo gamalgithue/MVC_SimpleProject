@@ -30,7 +30,7 @@
 * Design Patterns
   * Repository Pattern
   * Dependency injection 
-  * solid principles
+  * Solid Principles
 
 
 
