@@ -9,7 +9,7 @@
 # Features
  * Created User Authentication, Authorization and privileges.
  * Created Admin dashboard which An administrative dashboard for managing courses, users, and site content.
- * Created Custom DataTable with the server-side, Search Filter, Ordering and Pagination.
+ * Created Custom DataTable with the server-side, Search Filtering, Ordering and Pagination.
  * Exported this datatable in PDF and Excel.
  * Supported Multi Languages.
  * Used 3-tier architecture and Design Pattern
