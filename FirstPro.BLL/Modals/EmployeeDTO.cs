@@ -38,11 +38,11 @@ namespace FirstPro.BLL.Modals
         [Required(ErrorMessage = "Date Is Required")]
         public DateTime CreationDate { get; set; }
         
-        public string? PhotoName { get; set; }
-        public string? CvName { get; set; }
+        ////public string? PhotoName { get; set; }
+        ////public string? CvName { get; set; }
 
-         public IFormFile Photo { get; set; }
-        public IFormFile Cv { get; set; }
+        //// public IFormFile Photo { get; set; }
+        ////public IFormFile Cv { get; set; }
 
 
         public int DepartmentId { get; set; }

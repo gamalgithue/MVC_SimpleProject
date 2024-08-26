@@ -266,8 +266,7 @@
 
 
 
-                        @if (_signinmanager.IsSignedIn(User) && (User.IsInRole("Admin")) || (User.IsInRole("HR")))
-                        {
+                         @if (_signinmanager.IsSignedIn(User) && (User.IsInRole("Admin")) || (User.IsInRole("HR"))){
                             <li class="nav-header">Main Features</li>
 
 
@@ -307,7 +306,7 @@
                             </li>
 
                         }
-                        @if (_signinmanager.IsSignedIn(User) && (User.IsInRole("Admin"))) {
+                        @if (_signinmanager.IsSignedIn(User) && (User.IsInRole("Admin"))) { 
                         <li class="nav-header">User Management</li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">

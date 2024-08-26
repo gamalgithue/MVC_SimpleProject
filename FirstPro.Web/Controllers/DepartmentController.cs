@@ -3,10 +3,14 @@ using FirstPro.BLL.Modals;
 using FirstPro.BLL.Service.Interface;
 using FirstPro.BLL.Service.Repoistory;
 using FirstPro.DAL.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FirstPro.Web.Controllers
 {
+
+    [Authorize(Roles = "Admin,HR")]
+
     public class DepartmentController : Controller
     {
 

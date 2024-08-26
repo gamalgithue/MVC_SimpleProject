@@ -1,3 +1,4 @@
+using FirstPro.BLL.Helper;
 using FirstPro.BLL.Mapper;
 using FirstPro.BLL.Service.Interface;
 using FirstPro.BLL.Service.Repoistory;
@@ -56,6 +57,9 @@ builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 builder.Services.AddScoped<ICountryService, CountryService>();
 builder.Services.AddScoped<ICityService, CityService>();
 builder.Services.AddScoped<IDistrictService, DistrictService>();
+builder.Services.AddScoped<MailSender>();
+
+
 #endregion
 
 

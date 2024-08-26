@@ -13,11 +13,13 @@ namespace FirstPro.Web.Controllers
     {
         private readonly UserManager<ApplicationUser> _usermanager;
         private readonly SignInManager<ApplicationUser> _signinmanager;
+        private readonly MailSender mailSender;
 
-        public AccountController(UserManager<ApplicationUser> _usermanager,SignInManager<ApplicationUser> _signinmanager)
+        public AccountController(UserManager<ApplicationUser> _usermanager,SignInManager<ApplicationUser> _signinmanager,MailSender mailSender)
         {
             this._usermanager = _usermanager;
             this._signinmanager = _signinmanager;
+            this.mailSender = mailSender;
         }
 
         #region Registration
@@ -47,7 +49,7 @@ namespace FirstPro.Web.Controllers
 
                     var confirmationLink = Url.Action("ConfirmEmail", "Account",
                         new { userId = user.Id, token = token }, Request.Scheme);
-                    MailSender.Mail(user.Email, "Email Confirmation", "Please Confirm Your Email " + confirmationLink);
+                    mailSender.Mail("gamalelbatawy21@gmail.com", "Email Confirmation", "Please Confirm Your Email " + confirmationLink);
 
                     return RedirectToAction("Login");
                 }
@@ -114,27 +116,42 @@ namespace FirstPro.Web.Controllers
         public async Task<IActionResult> Login(LoginDTO login,string returnUrl="")
         {
 
-
-           
-
-            
-                var user = await _usermanager.FindByEmailAsync(login.Email);
-
-                var result = await _signinmanager.PasswordSignInAsync(user, login.Password, login.RememberMe, false);
+            if (ModelState.IsValid)
+            {
+                // Attempt to find the user by their email
 
 
-                if (result.Succeeded)
+
+                 var user = await _usermanager.FindByEmailAsync(login.Email);
+
+                if (user != null)
                 {
-                    return RedirectToAction("Index", "Home");
-                }
+                    var result = await _signinmanager.PasswordSignInAsync(user, login.Password, login.RememberMe, false);
 
+
+                    if (result.Succeeded)
+                    {
+                        // Redirect to the returnUrl if provided, otherwise to the home page
+                        if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                        {
+                            return Redirect(returnUrl);
+                        }
+                        return RedirectToAction("Index", "Home");
+                    }
+
+                    else
+                    {
+                        ModelState.AddModelError("", "Invalid UserName Or Password");
+
+                    }
+                }
                 else
                 {
-                    ModelState.AddModelError("", "Invalid UserName Or Password");
-
+                    ModelState.AddModelError("", "Invalid username or password.");
                 }
-            
-        
+            }
+
+
 
             return View(login);
         }
@@ -275,7 +292,7 @@ namespace FirstPro.Web.Controllers
 
                     var passwordResetLink = Url.Action("ResetPassword", "Account", new { Email = model.Email, Token = token }, Request.Scheme);
 
-                    MailSender.Mail(user.Email, "ResetPassword", "Please Reset Your Password " + passwordResetLink);
+                    mailSender.Mail(user.Email, "ResetPassword", "Please Reset Your Password " + passwordResetLink);
 
 
                     //logger.Log(LogLevel.Warning, passwordResetLink);

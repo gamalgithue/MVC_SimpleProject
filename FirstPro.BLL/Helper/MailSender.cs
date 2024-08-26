@@ -1,4 +1,5 @@
 ﻿using Azure.Core;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,16 +10,29 @@ using System.Threading.Tasks;
 
 namespace FirstPro.BLL.Helper
 {
-     public class MailSender
+     public  class MailSender
     {
-        public static void Mail(string sender,string sub,string body)
+       
+        private readonly IConfiguration _configuration;
+
+        public MailSender(IConfiguration configuration)
         {
-            SmtpClient smtp = new SmtpClient("smtp.gmail.com");
-            smtp.EnableSsl = true;
-            smtp.Port = 587;
-            smtp.Credentials = new NetworkCredential("gemyelbatawy@gmail.com", "dxugvwehyipvljlx");
-            smtp.Send("gemyelbatawy@gmail.com", sender, sub, body);
+            _configuration = configuration;
         }
-      
+
+        public void Mail(string sender, string sub, string body)
+        {
+            var smtpSettings = _configuration.GetSection("SmtpSettings");
+
+            SmtpClient smtp = new SmtpClient(smtpSettings["Server"])
+            {
+                EnableSsl = bool.Parse(smtpSettings["EnableSsl"]),
+                Port = int.Parse(smtpSettings["Port"]),
+                Credentials = new NetworkCredential(smtpSettings["Username"], smtpSettings["Password"])
+            };
+
+            smtp.Send(smtpSettings["Username"], sender, sub, body);
+        }
+
     }
 }
